@@ -34,11 +34,11 @@
 #
 ## Start Nginx
 #CMD ["nginx", "-g", "daemon off;"]
-
+FROM node:18-alpine3.17
 WORKDIR /app
 
 # Use official Node.js image as base
-FROM node:18-alpine3.17
+
 
 # Set working directory
 WORKDIR /usr/src/app
