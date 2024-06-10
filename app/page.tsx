@@ -6,7 +6,7 @@ import LandingPage from "./LandingPage";
 
 export default function Home() {
     return (
-        <Box style={{ }}>
+        <Box style={{}}>
             <LandingPage/>
         </Box>
     );

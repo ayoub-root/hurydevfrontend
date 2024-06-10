@@ -1,15 +1,22 @@
 import React, {useMemo, useRef, useState} from 'react';
-import JoditEditor from 'jodit-react';
-import {Jodit} from "jodit";
-//import {MODE_WYSIWYG} from "jodit/types/core/constants";
-//import {placeholder} from "jodit/types/plugins/placeholder/placeholder";
 
-const JoditEditorComponent = ({value, onChange}: any) => {
+
+import dynamic from "next/dynamic";
+import {showInformation} from "../../../components/utilis";
+
+
+// This is now your dependency import
+const JoditEditor = dynamic(() => import("jodit-react"), {
+    ssr: false,
+}); // This is now your dependency import
+
+const JoditEditorComponent = ({value = "", onChange}: any) => {
     const editor = useRef(null);
     const [content, setContent] = useState(value || "");
 
-    const config = useMemo(
+    const config: any = useMemo(
         () => ({
+
             zIndex: 0,
 
             readonly: false,
@@ -61,17 +68,17 @@ const JoditEditorComponent = ({value, onChange}: any) => {
                         }
                         editor.execCommand('copy');
                         // @ts-ignore
-                        Jodit.Alert('Text in your clipboard');
+                        showInformation('Text in your clipboard');
                     }
                 },
                 {
                     name: 'insertCode',
                     iconURL: 'https://icons.iconarchive.com/icons/iconsmind/outline/128/Code-Window-icon.png',
                     exec: (editor: any) => {
-                        console.log(editor.s)
+
                         const selectedText = editor.selected;
                         if (selectedText) {
-                            console.log(selectedText)
+
                             editor.s.insertHTML(`<div style="border: solid 1px #ccc; width: 90%; padding: 10px; margin-block: 4px;"><code>${selectedText}</code></div>`);
                         }
                     }
@@ -141,16 +148,16 @@ const JoditEditorComponent = ({value, onChange}: any) => {
         <JoditEditor
             ref={editor}
             value={content}
-            // @ts-ignore
+
             config={config}
-            tabIndex={1} // tabIndex of textarea
+
             onBlur={(newContent) => {
                 setContent(newContent)
                 onChange(newContent)
             }} // preferred to use only this option to update the content for performance reasons
-            onChange={(newContent) => {
-            }}
-            s
+            // onChange={(newContent) => {
+            // }}
+
         />
     );
 };

@@ -1,7 +1,7 @@
-import {Button, IconButton} from "@mui/material";
+import {Button} from "@mui/material";
 import React, {useRef} from "react";
 
-const FileUploadButton = ({onFileSelect,text,style}: any) => {
+const FileUploadButton = ({onFileSelect, text, style}: any) => {
     const fileInputRef = useRef<any>(null);
 
     const handleButtonClick: any = () => {
@@ -17,14 +17,14 @@ const FileUploadButton = ({onFileSelect,text,style}: any) => {
     };
 
     return (
-        <div style={style||{}}>
+        <div style={style || {}}>
             <input
                 type="file"
                 ref={fileInputRef}
                 style={{display: "none"}}
                 onChange={handleFileChange}
             />
-            <Button onClick={handleButtonClick}>{text||"Select image"}</Button>
+            <Button onClick={handleButtonClick}>{text || "Select image"}</Button>
         </div>
     );
 };

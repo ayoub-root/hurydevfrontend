@@ -28,19 +28,11 @@ import AccordionSummary from "@mui/material/AccordionSummary";
 import AccordionDetails from "@mui/material/AccordionDetails";
 import PostDetails from "./posts/components/PostDetails";
 import Typography from "@mui/material/Typography";
-import {getSavedList, removeFromSavedList} from "./posts/controllers/postController";
+import {getSavedList, removeFromSavedList} from "./posts/postController";
 import {Theme} from "@mui/material/styles";
-import BlogSearch from "./posts/components/BlogSearch";
 
 import {updateLoggedAccount} from "../../lib/reducers/accountSlicer";
-import Link from "@mui/material/Link";
-import MenuItem from "@mui/material/MenuItem";
 
-interface TabPanelProps {
-    children?: React.ReactNode;
-    index: any;
-    value: any;
-}
 
 export default function Blog() {
     const isSmallScreen = useMediaQuery("(max-width:600px)");
@@ -72,11 +64,11 @@ export default function Blog() {
         setChecked(newChecked);
     };
     const filtersList =
-        useSelector((state: RootState) => state.filtersList)?.filtersList  ||[] ;
-const dispatch= useDispatch()
+        useSelector((state: RootState) => state.filtersList)?.filtersList || [];
+    const dispatch = useDispatch()
 
     return (
-        <Container maxWidth="xl" sx={{width: {xs:"100%",sm:"100%",md:"100%",lg:"90%"}}}>
+        <Container maxWidth="xl" sx={{width: {xs: "100%", sm: "100%", md: "100%", lg: "90%"}}}>
             <MyAppBar/>
             <Box
                 sx={{
@@ -105,14 +97,19 @@ const dispatch= useDispatch()
                                 : `0 0 4px 2px ${alpha("#033363", 0.2)}`,
                     })}
                 >
-                    <div style={{paddingInline:"10px",alignItems: 'center', display: 'flex', justifyContent: 'space-between'}}>
+                    <div style={{
+                        paddingInline: "10px",
+                        alignItems: 'center',
+                        display: 'flex',
+                        justifyContent: 'space-between'
+                    }}>
 
                         {loggedAccount && (
-                            <Link href="/myspace" style={{textDecoration: "none"}}>
+                            <a href="/myspace" style={{textDecoration: "none"}}>
                                 <Button>
-                                        Dashboard{" "}
+                                    Dashboard{" "}
                                 </Button>
-                            </Link>
+                            </a>
                         )}
                         {loggedAccount && (
 
@@ -136,7 +133,7 @@ const dispatch= useDispatch()
                             <AccordionSummary expandIcon={<ArrowDropDownOutlined/>}>
                                 Filters
                             </AccordionSummary>
-                            <AccordionDetails sx={{paddingInline: "10px",display:filtersList?"":"none"}}>
+                            <AccordionDetails sx={{paddingInline: "10px", display: filtersList ? "" : "none"}}>
                                 <List sx={{width: "100%", bgcolor: "background.paper"}}>
                                     {filtersList?.map((value: any, index) => {
                                         const labelId = `checkbox-list-label-${value}`;
@@ -260,11 +257,11 @@ const dispatch= useDispatch()
                                                                 }}
                                                                 onClick={async (e) => {
                                                                     e.stopPropagation();
-                                                                    await removeFromSavedList(value?.value).then(async ()=>{
-                                                                        await getSavedList().then(async(data:any)=>{
+                                                                    await removeFromSavedList(value?.value).then(async () => {
+                                                                        await getSavedList().then(async (data: any) => {
                                                                             //     alert(JSON.stringify(data))
                                                                             setLoading(false);
-                                                                            dispatch(updateLoggedAccount({savedItems:data}))
+                                                                            dispatch(updateLoggedAccount({savedItems: data}))
                                                                         })
                                                                     })
                                                                 }}
@@ -316,14 +313,18 @@ const dispatch= useDispatch()
                 open={open}
                 onClose={handleClose}
             >
-                <DialogContent style={{paddingBlock: "0px",paddingInline:0, height: '100vh'}}>
+                <DialogContent style={{paddingBlock: "0px", paddingInline: 0, height: '100vh'}}>
                     <IconButton
-                        sx={{position: "absolute", marginLeft: {xs:"0px",sm:"10px"},marginTop:"20px"}}
+                        sx={{position: "absolute", marginLeft: {xs: "0px", sm: "10px"}, marginTop: "20px"}}
                         onClick={handleClose}
                     >
                         <ArrowBack/>
                     </IconButton>
-                    <Container maxWidth="xl" sx={{width: {xs:"100%",sm:"100%",md:"100%",lg:"95%"},padding:0, height: '100%'}}>
+                    <Container maxWidth="xl" sx={{
+                        width: {xs: "100%", sm: "100%", md: "100%", lg: "95%"},
+                        padding: 0,
+                        height: '100%'
+                    }}>
                         <PostDetails params={{slug: openSlug}} isDialog={true}/>
                     </Container>
                 </DialogContent>

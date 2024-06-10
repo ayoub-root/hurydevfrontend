@@ -1,7 +1,4 @@
 import {axiosApi, showInformation} from "components/utilis";
-import {login} from "../../../lib/reducers/accountSlicer";
-import {toggleOpenLogin} from "../../../lib/reducers/appSlicer";
-import {useDispatch} from "react-redux";
 
 
 export const userRegister = async (data: {
@@ -11,12 +8,13 @@ export const userRegister = async (data: {
     lastname: string | undefined;
 }) => {
     const config =
-        { withCredentials:false,
-        headers: {
-            // "Content-Type": "application/json",
-            "Content-Type": "multipart/form-data",
-        },
-    };
+        {
+            withCredentials: false,
+            headers: {
+                // "Content-Type": "application/json",
+                "Content-Type": "multipart/form-data",
+            },
+        };
 
     const {email, password, firstname, lastname} = data;
     try {
@@ -44,7 +42,7 @@ export const userRegister = async (data: {
             showInformation(response.data);
             throw new Error(response.data);
         }
-    } catch (error:any) {
+    } catch (error: any) {
         showInformation(error.response.data);
         throw new Error(error.response.data);
     }

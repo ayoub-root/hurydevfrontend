@@ -7,20 +7,18 @@ import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
 import {Container, IconButton} from "@mui/material";
-import {userRegister} from "app/account/controllers/UserRegister";
 import {Visibility, VisibilityOff} from "@mui/icons-material";
-import {useDispatch} from "react-redux";
 import {axiosApi, showInformation} from "../../../components/utilis";
 
 export default function UpdatePassword(props: any) {
-    const userId= props?.userId;
+    const userId = props?.userId;
     const [isLoading, setLoading] = React.useState(false);
     const [hidePassord, setHidePassword] = React.useState(false);
     const [oldPassword, setOldPassword] = React.useState("");
     const [newPassword, setNewPassword] = React.useState("");
 
-    const updatePassword = async ( oldPassword:any,
-                                      newPassword:any,userId:any) => {
+    const updatePassword = async (oldPassword: any,
+                                  newPassword: any, userId: any) => {
         try {
             if (!oldPassword || !newPassword)
                 throw new Error("passwords are required");
@@ -35,27 +33,25 @@ export default function UpdatePassword(props: any) {
             );
 
             if (response.status === 200) {
-showInformation(response.data.body)
+                showInformation(response.data.body)
                 return response;
             } else if (response.status === 403) {
                 showInformation(response.data.body)
 
 
             }
-        } catch (error:any) {
+        } catch (error: any) {
             showInformation(error.response.data);
             throw new Error(error.data.body);
         }
     }
 
-    const handleUpdatePassword = (userId:any) => {
+    const handleUpdatePassword = (userId: any) => {
         setLoading(isLoading);
 
         try {
             updatePassword(
-
-                oldPassword, newPassword,userId
-
+                oldPassword, newPassword, userId
             )
                 .then((e) => {
                     setLoading(false);

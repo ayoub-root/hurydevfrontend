@@ -1,9 +1,13 @@
 # Project Name: My Portfolio and Blog Application
 
-Welcome to My Portfolio and Blog Application! This project is a feature-rich web application built using Next.js. It includes a blog, a portfolio section, and a dashboard to manage different portfolios (CVs). The application also features a contact page to receive messages, user authentication (login, register, and password reset), and more.
+Welcome to My Portfolio and Blog Application! This project is a feature-rich web application built using Next.js. It
+includes a blog, a portfolio section, and a dashboard to manage different portfolios (CVs). The application also
+features a contact page to receive messages, user authentication (login, register, and password reset), and more.
 
 (this readme should be updated)
+
 ## Table of Contents
+
 - [Features](#features)
 - [Prerequisites](#prerequisites)
 - [Installation](#installation)
@@ -13,6 +17,7 @@ Welcome to My Portfolio and Blog Application! This project is a feature-rich web
 - [Contact](#contact)
 
 ## Features
+
 - **Blog**: Create, read, update, and delete blog posts.
 - **Portfolio**: Showcase different portfolios (CVs) with the ability to manage them through a dashboard.
 - **Dashboard**: Manage your blog posts and portfolios.
@@ -20,12 +25,15 @@ Welcome to My Portfolio and Blog Application! This project is a feature-rich web
 - **User Authentication**: Register, login, and reset password functionality.
 
 ## Prerequisites
+
 Before you begin, ensure you have met the following requirements:
+
 - Node.js (>= 14.x)
 - npm or yarn
 - Git (optional but recommended)
 
 ## Installation
+
 To install the application, follow these steps:
 
 1. Clone the repository:
@@ -48,6 +56,7 @@ To install the application, follow these steps:
     ```
 
 ## Setup
+
 1. Create a `.env.local` file in the root directory of the project:
     ```bash
     touch .env.local
@@ -62,6 +71,7 @@ To install the application, follow these steps:
 3. Set up any necessary API keys or secret configurations in the `.env.local` file.
 
 ## Running the Application
+
 To run the application, use the following commands:
 
 1. **Development mode**:
@@ -93,7 +103,9 @@ To run the application, use the following commands:
     ```
 
 ## Project Structure
+
 The project structure is as follows:
+
 ```
 your-repo-name/
 ├── components/         # Reusable components
@@ -114,6 +126,7 @@ your-repo-name/
 ```
 
 ## Contact
+
 If you have any questions or need further assistance, please feel free to contact me at [ayoub.inf30@gmail.com].
 
 Thank you for using My Portfolio and Blog Application!

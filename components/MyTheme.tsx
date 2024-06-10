@@ -22,7 +22,7 @@ import Box from "@mui/material/Box";
 import Signin from "../app/account/signin/page";
 import Signup from "../app/account/signup/page";
 import IconButton from "@mui/material/IconButton";
-import {Close, PasswordRounded} from "@mui/icons-material";
+import {Close} from "@mui/icons-material";
 import {getAllFilters} from "../app/blog/components/CustomFilter";
 import {getAFilters} from "../lib/reducers/filtersSlicer";
 import ForgotPassword from "../app/account/forgot-password/page";
@@ -115,7 +115,7 @@ export default function MyTheme(props: { children: React.ReactNode }) {
                 <>
                     <div>{props.children} </div>
 
-                    <Drawer open={openLogin || openRegister|| openReset || openForgot }
+                    <Drawer open={openLogin || openRegister || openReset || openForgot}
                             anchor="right"
                             sx={{zIndex: 13000}}
                     >
@@ -130,8 +130,8 @@ export default function MyTheme(props: { children: React.ReactNode }) {
                         <Box width={"600px"} sx={{backgroundColor: "background.paper"}}>
                             {openLogin && <Signin/>}
                             {openRegister && <Signup/>}
-                            {openForgot&& <ForgotPassword/>}
-                            {openReset && <ResetPassword/>  }
+                            {openForgot && <ForgotPassword/>}
+                            {openReset && <ResetPassword/>}
                         </Box>
 
                     </Drawer>

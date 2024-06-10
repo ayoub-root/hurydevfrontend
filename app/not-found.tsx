@@ -14,7 +14,7 @@ const NotFound = () => {
                 flexDirection: "column",
                 alignItems: "center",
                 justifyContent: "center",
-              //  border: "solid",
+                //  border: "solid",
             }}
         >
             <div

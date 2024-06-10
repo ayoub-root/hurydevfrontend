@@ -1,9 +1,7 @@
 import Tooltip from "@mui/material/Tooltip";
 import {Bookmark, BookmarkAddOutlined, Comment, MoreVertOutlined, ThumbUpOffAlt,} from "@mui/icons-material";
 import MenuIcon from "@mui/icons-material/Menu";
-import ToggleColorMode from "../../../../components/ToggleColorMode";
-import {addToSavedList, getSavedList, handleRaction, removeFromSavedList} from "../controllers/postController";
-import Button from "@mui/material/Button";
+import {addToSavedList, getSavedList, handleRaction, removeFromSavedList} from "../postController";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../../lib/store";
 import {Avatar, IconButton, ListItemIcon, ListItemText, Menu, MenuItem} from "@mui/material";
@@ -121,11 +119,11 @@ function LikeButton(props: any) {
     return (
         <div>
             <Tooltip
-               placement={props?.row?"top-start":"left"}
+                placement={props?.row ? "top-start" : "left"}
                 TransitionProps={{
                     style: {
 
-                        marginLeft:"-30px",
+                        marginLeft: "-30px",
                         backgroundColor: "#ccca",
                         border: "solid 1px #ddd",
                         minWidth: '330px',
@@ -139,7 +137,7 @@ function LikeButton(props: any) {
                             <IconButton style={{width: '35px', height: "35px", marginInline: "2px"}}
                                         key={reaction.value} aria-label={reaction.name}
                                         onClick={async () => {
-                                            await handleRaction(article?.id, reaction?.value).then(()=>{
+                                            await handleRaction(article?.id, reaction?.value).then(() => {
                                                 props?.isUpdated()
                                             })
 
@@ -171,7 +169,7 @@ function LikeButton(props: any) {
 
 function PostActions(props: any) {
     const dispatch = useDispatch();
-    const [loading, setLoading]=useState<boolean>(false)
+    const [loading, setLoading] = useState<boolean>(false)
 
     const column: any =
         {display: 'flex', flexDirection: "column", alignItems: 'center', rowGap: "10px",};
@@ -188,13 +186,14 @@ function PostActions(props: any) {
 
             <div style={props?.row ? row : column}>
                 {/*<ToggleColorMode/>*/}
-                <Tooltip sx={{display:!props?.row?"":"none"}} title="show content table" placement="right">
+                <Tooltip sx={{display: !props?.row ? "" : "none"}} title="show content table" placement="right">
                     <IconButton onClick={() => props?.showSummray()}>
                         <MenuIcon/>
                     </IconButton>
                 </Tooltip>
                 <Tooltip title="Add reaction" placement="right">
-                    <LikeButton data={article} row={props?.row} loggedAccount={loggedAccount} isUpdated={()=>props.isUpdated()}/>
+                    <LikeButton data={article} row={props?.row} loggedAccount={loggedAccount}
+                                isUpdated={() => props.isUpdated()}/>
                 </Tooltip>
                 {/* Other reaction buttons */}
                 <Tooltip title="Jump to Comments" placement="right">
@@ -220,35 +219,35 @@ function PostActions(props: any) {
                 <Tooltip title="Save" placement="right">
                     <IconButton size="small"
                                 disabled={loading}
-                            onClick={async () => {
+                                onClick={async () => {
 
-                                if (!loggedAccount)
-                                    dispatch(toggleOpenLogin());
-                                else {
-                                    if (isBookMarked) {
-                                        await removeFromSavedList(article?.slug).then(async ()=>{
-                                            await getSavedList().then(async(data:any)=>{
-                                                //     alert(JSON.stringify(data))
-                                                setLoading(false);
-                                                dispatch(updateLoggedAccount({savedItems:data}))
+                                    if (!loggedAccount)
+                                        dispatch(toggleOpenLogin());
+                                    else {
+                                        if (isBookMarked) {
+                                            await removeFromSavedList(article?.slug).then(async () => {
+                                                await getSavedList().then(async (data: any) => {
+                                                    //     alert(JSON.stringify(data))
+                                                    setLoading(false);
+                                                    dispatch(updateLoggedAccount({savedItems: data}))
+                                                })
                                             })
-                                        })
-                                    } else
-                                        await addToSavedList({
-                                            title: article?.title,
-                                            type: "posts",
-                                            value: article?.slug,
-                                            image: article?.image
-                                        }).then(async ()=>
+                                        } else
+                                            await addToSavedList({
+                                                title: article?.title,
+                                                type: "posts",
+                                                value: article?.slug,
+                                                image: article?.image
+                                            }).then(async () =>
 
-                                            await getSavedList().then(async(data:any)=>{
-                                                //  alert(JSON.stringify(data))
-                                                dispatch(updateLoggedAccount({savedItems:data}))
-                                                setLoading(false);
-                                            })
-                                        )
-                                }
-                            }}
+                                                await getSavedList().then(async (data: any) => {
+                                                    //  alert(JSON.stringify(data))
+                                                    dispatch(updateLoggedAccount({savedItems: data}))
+                                                    setLoading(false);
+                                                })
+                                            )
+                                    }
+                                }}
 
                     > {isBookMarked ? <Bookmark/> : <BookmarkAddOutlined/>}
                     </IconButton>

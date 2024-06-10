@@ -1,6 +1,4 @@
-
 import {axiosApi, showInformation} from "components/utilis";
-import {login} from "../../../lib/reducers/accountSlicer";
 
 
 export const userLogin = async (data: {
@@ -22,7 +20,7 @@ export const userLogin = async (data: {
 
         if (response.status === 200) {
 
-            showInformation("welcome "+response?.data?.firstname);
+            showInformation("welcome " + response?.data?.firstname);
             return response;
         }
     } catch (ress: any) {

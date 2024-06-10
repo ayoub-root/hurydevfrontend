@@ -4,17 +4,17 @@ import PropTypes from "prop-types";
 
 interface MyDialogProps {
     open: boolean,
-    title:string,
-    children:any,
-    onClose:any,
-    maxWidth:any,
-    height?:string,
-    options?:any,
+    title: string,
+    children: any,
+    onClose: any,
+    maxWidth: any,
+    height?: string,
+    options?: any,
 
 }
 
 function MyDialog(props: MyDialogProps) {
-    const {title, children, open, onClose, maxWidth, height, options}:MyDialogProps = props;
+    const {title, children, open, onClose, maxWidth, height, options}: MyDialogProps = props;
 
     return (
         <Dialog

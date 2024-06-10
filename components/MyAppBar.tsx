@@ -4,8 +4,6 @@ import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
-import Divider from "@mui/material/Divider";
-import MenuItem from "@mui/material/MenuItem";
 import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import ToggleColorMode from "./ToggleColorMode";
@@ -68,7 +66,7 @@ function MyAppBar() {
                             <ArrowBack/>
                         </Link>
                     </IconButton>
-         <BlogSearch/>
+                    <BlogSearch/>
                 </Box>
                 <Box
                     sx={{
@@ -105,7 +103,7 @@ function MyAppBar() {
 
                     <ToggleColorMode/>
                 </Box>
-                <Box sx={{display: {sm: "none", md: "none",lg:"none",xs:"none"}}}>
+                <Box sx={{display: {sm: "none", md: "none", lg: "none", xs: "none"}}}>
                     <Button
                         variant="text"
                         color="primary"

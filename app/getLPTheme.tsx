@@ -139,11 +139,11 @@ const getDesignTokens = (mode: PaletteMode) => ({
             default: "#fff",
             default2: "#eee",
             whitebg: "#fff",
-            cvcontainer:"rgba(208,217,232,0.44)",
+            cvcontainer: "rgba(208,217,232,0.44)",
             dialog: gray[50],
             paper: gray[50],
             ...(mode === "dark" && {
-                whitebg: gray[300],  cvcontainer:"#1e1f22",
+                whitebg: gray[300], cvcontainer: "#1e1f22",
 
                 default: gray[900],
                 default2: brand[700],

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
-import { Bar, Line, Pie, Radar, Doughnut, PolarArea, Bubble, Scatter } from 'react-chartjs-2';
+import React, {useState} from 'react';
+import {Bar, Bubble, Doughnut, Line, Pie, PolarArea, Radar, Scatter} from 'react-chartjs-2';
 import {
+    ArcElement,
     BarElement,
     CategoryScale,
     Chart as ChartJS,
@@ -8,12 +9,11 @@ import {
     LinearScale,
     LineElement,
     PointElement,
+    RadialLinearScale,
     Title,
     Tooltip,
-    ArcElement,
-    RadialLinearScale,
 } from 'chart.js';
-import { Grid } from '@mui/material';
+import {Grid} from '@mui/material';
 
 // Register the required components
 ChartJS.register(
@@ -30,26 +30,26 @@ ChartJS.register(
 );
 
 const generateFakeData = () => {
-    const fakePosts = Array.from({ length: 10 }, (_, index) => ({
+    const fakePosts = Array.from({length: 10}, (_, index) => ({
         title: `Post ${index + 1}`,
         views: Math.floor(Math.random() * 1000),
     }));
 
-    const fakeMessages = Array.from({ length: 10 }, (_, index) => ({
-        user: { name: `User ${index + 1}` },
+    const fakeMessages = Array.from({length: 10}, (_, index) => ({
+        user: {name: `User ${index + 1}`},
         count: Math.floor(Math.random() * 100),
     }));
 
-    const fakeUsers = Array.from({ length: 10 }, (_, index) => ({
+    const fakeUsers = Array.from({length: 10}, (_, index) => ({
         name: `User ${index + 1}`,
         postsCount: Math.floor(Math.random() * 50),
     }));
 
-    return { fakePosts, fakeMessages, fakeUsers };
+    return {fakePosts, fakeMessages, fakeUsers};
 };
 
 const DashboardPage = (props: any) => {
-    const { fakePosts, fakeMessages, fakeUsers } = generateFakeData();
+    const {fakePosts, fakeMessages, fakeUsers} = generateFakeData();
 
     const [posts, setPosts] = useState(props.posts || fakePosts);
     const [messages, setMessages] = useState(props.messages || fakeMessages);
@@ -173,9 +173,9 @@ const DashboardPage = (props: any) => {
             {
                 label: 'First Dataset',
                 data: [
-                    { x: 20, y: 30, r: 15 },
-                    { x: 40, y: 10, r: 10 },
-                    { x: 25, y: 15, r: 20 },
+                    {x: 20, y: 30, r: 15},
+                    {x: 40, y: 10, r: 10},
+                    {x: 25, y: 15, r: 20},
                 ],
                 backgroundColor: 'rgba(255, 99, 132, 0.2)',
                 borderColor: 'rgba(255, 99, 132, 1)',
@@ -189,10 +189,10 @@ const DashboardPage = (props: any) => {
             {
                 label: 'Scatter Dataset',
                 data: [
-                    { x: -10, y: 0 },
-                    { x: 0, y: 10 },
-                    { x: 10, y: 5 },
-                    { x: 0.5, y: 5.5 },
+                    {x: -10, y: 0},
+                    {x: 0, y: 10},
+                    {x: 10, y: 5},
+                    {x: 0.5, y: 5.5},
                 ],
                 backgroundColor: 'rgba(75, 192, 192, 0.2)',
                 borderColor: 'rgba(75, 192, 192, 1)',
@@ -202,7 +202,7 @@ const DashboardPage = (props: any) => {
     };
 
     return (
-        <Grid container spacing={3} p={2} rowGap={"30px"} >
+        <Grid container spacing={3} p={2} rowGap={"30px"}>
             <Grid item xs={12}>
                 <h1>Dashboard (fake data)</h1>
             </Grid>
@@ -210,47 +210,47 @@ const DashboardPage = (props: any) => {
 
             <Grid item xs={6} sm={4}>
                 <h2>Posts Overview</h2>
-                <Bar data={postsData} />
+                <Bar data={postsData}/>
             </Grid>
 
             <Grid item xs={6} sm={4}>
                 <h2>Messages Overview</h2>
-                <Line data={messagesData} />
+                <Line data={messagesData}/>
             </Grid>
 
             <Grid item xs={6} sm={4}>
                 <h2>Users Overview</h2>
-                <Bar data={usersData} />
+                <Bar data={usersData}/>
             </Grid>
 
             <Grid item xs={6} sm={4}>
                 <h2>Colors Distribution</h2>
-                <Pie data={pieData} />
+                <Pie data={pieData}/>
             </Grid>
 
             <Grid item xs={6} sm={4}>
                 <h2>Activity Radar</h2>
-                <Radar data={radarData} />
+                <Radar data={radarData}/>
             </Grid>
 
             <Grid item xs={6} sm={4}>
                 <h2>Colors Doughnut</h2>
-                <Doughnut data={doughnutData} />
+                <Doughnut data={doughnutData}/>
             </Grid>
 
             <Grid item xs={6} sm={4}>
                 <h2>Polar Area Chart</h2>
-                <PolarArea data={polarData} />
+                <PolarArea data={polarData}/>
             </Grid>
 
             <Grid item xs={6} sm={4}>
                 <h2>Bubble Chart</h2>
-                <Bubble data={bubbleData} />
+                <Bubble data={bubbleData}/>
             </Grid>
 
             <Grid item xs={6} sm={4}>
                 <h2>Scatter Chart</h2>
-                <Scatter data={scatterData} />
+                <Scatter data={scatterData}/>
             </Grid>
         </Grid>
     );

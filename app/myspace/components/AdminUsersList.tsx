@@ -16,7 +16,6 @@ import {
 } from "@mui/material";
 import {axiosApi, formatDateTime, showInformation} from "components/utilis";
 import MyDialog from "components/MyDialog";
-import ContactUs from "components/ContactUs";
 import LoadingPage from "app/LoadingPage";
 import AddAccount from "../../account/components/AddAccount";
 import UpdatePassword from "../../account/components/UpdatePassword";
@@ -246,7 +245,7 @@ export default function AdminUsersList() {
                 });
         };
         getUsers();
-    }, [setLoading, currentPage,update]);
+    }, [setLoading, currentPage, update]);
     const [editUser, setEditUser] = React.useState<any>(null);
     const [updatePass, setUpdatePass] = React.useState<boolean>(false);
 
@@ -265,7 +264,7 @@ export default function AdminUsersList() {
             .delete(`/users/${slug}`)
             .then((reponse) => reponse.data)
             .then((json) => {
-                setUpdate(r=>r+1)
+                setUpdate(r => r + 1)
 
                 setLoading(false);
             })
@@ -281,8 +280,8 @@ export default function AdminUsersList() {
         <Box sx={{height: "100%", width: "100%"}}>
             <div style={{display: "flex", width: "100%", paddingBottom: "10px"}}>
                 <Button variant="outlined" onClick={() => {
-                    if(loggedAccount.role=="ADMIN")
-                    setNewPost(true)
+                    if (loggedAccount.role == "ADMIN")
+                        setNewPost(true)
                     else showInformation("you are not admin")
                 }}>
                     <Add/> User
@@ -351,7 +350,7 @@ export default function AdminUsersList() {
 
                     setEditUser(null);
                     setNewPost(false)
-                    setUpdate(r=>r+1)
+                    setUpdate(r => r + 1)
                 }}
                             editUser={editUser}
                 />
@@ -372,9 +371,9 @@ export default function AdminUsersList() {
 
                     setEditUser(null);
                     setUpdatePass(false)
-                    setUpdate(r=>r+1)
+                    setUpdate(r => r + 1)
                 }}
-                            userId={editUser?.id}
+                                userId={editUser?.id}
                 />
             </MyDialog>
         </Box>

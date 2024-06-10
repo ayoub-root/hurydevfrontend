@@ -1,6 +1,5 @@
 "use client";
 import * as React from "react";
-import {useEffect} from "react";
 import {CSSObject, styled, Theme} from "@mui/material/styles";
 import Box from "@mui/material/Box";
 import MuiDrawer from "@mui/material/Drawer";
@@ -17,7 +16,7 @@ import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
 import {isMobile} from "components/utilis";
 import AccountMenu from "components/AccountMenu";
-import {Link, Tab, Tabs} from "@mui/material";
+import { Tab, Tabs} from "@mui/material";
 import {ArrowBack, Article, Dashboard, DocumentScanner, Menu, Message, People,} from "@mui/icons-material";
 import AdminPostsList from "./components/AdminPostsList";
 import AdminUsersList from "./components/AdminUsersList";
@@ -102,11 +101,11 @@ const Drawer = styled(MuiDrawer, {
 }));
 
 const adminServices = [
-    {title: "Dashboard", icon: <Dashboard/>, component: <DashboardPage/>,requireAdmin:false,},
-    {title: "Posts", icon: <Article/>, component: <AdminPostsList/>,requireAdmin:false,},
-    {title: "Users", icon: <People/>, component: <AdminUsersList/>,requireAdmin:false,},
-    {title: "Messages", icon: <Message/>, component: <AdminMessagesList/>,requireAdmin:false,},
-    {title: "My Cvs", icon: <DocumentScanner/>, component: <AdminMyCvsList/>,requireAdmin:true,},
+    {title: "Dashboard", icon: <Dashboard/>, component: <DashboardPage/>, requireAdmin: false,},
+    {title: "Posts", icon: <Article/>, component: <AdminPostsList/>, requireAdmin: false,},
+    {title: "Users", icon: <People/>, component: <AdminUsersList/>, requireAdmin: false,},
+    {title: "Messages", icon: <Message/>, component: <AdminMessagesList/>, requireAdmin: false,},
+    {title: "My Cvs", icon: <DocumentScanner/>, component: <AdminMyCvsList/>, requireAdmin: true,},
 ];
 
 interface TabPanelProps {
@@ -143,7 +142,7 @@ function a11yProps(index: number) {
     };
 }
 
-export default function MiniDrawer() {
+export default function MySpace() {
     const searchParams: ReadonlyURLSearchParams = useSearchParams()
     const router = useRouter()
     const [open, setOpen] = React.useState(true);
@@ -156,11 +155,11 @@ export default function MiniDrawer() {
         setOpen(false);
     };
 
-   // const [value, setValue] = React.useState<number>(parseInt(searchParams.get('tab') || 0));
-const value:string|undefined|null= searchParams.get("tab")||"0";
+    // const [value, setValue] = React.useState<number>(parseInt(searchParams.get('tab') || 0));
+    const value: string | undefined | null = searchParams.get("tab") || "0";
     const handleChange = (event: React.SyntheticEvent, newValue: number) => {
         router.push("/myspace?tab=" + newValue);
-      //  setValue(newValue);
+        //  setValue(newValue);
     };
 
 
@@ -206,9 +205,9 @@ const value:string|undefined|null= searchParams.get("tab")||"0";
                             >
                                 <Typography variant="h6" noWrap component="div">
                                     <IconButton>
-                                        <Link href={"/"}>
+                                        <a href={"/"}>
                                             <ArrowBack/>
-                                        </Link>
+                                        </a>
                                     </IconButton>{" "}
                                     {/* <TextField
                     InputProps={{
@@ -250,7 +249,7 @@ const value:string|undefined|null= searchParams.get("tab")||"0";
                             aria-label="Vertical tabs example"
                             sx={{borderRight: 1, borderColor: "divider"}}
                         >
-                            {adminServices.filter(d=>loggedAccount?.role=="ADMIN"?true:!d.requireAdmin).map((a, index) => (
+                            {adminServices.filter(d => loggedAccount?.role == "ADMIN" ? true : !d.requireAdmin).map((a, index) => (
                                 <Tab
                                     key={index}
                                     {...a11yProps(index)}
@@ -302,18 +301,19 @@ const value:string|undefined|null= searchParams.get("tab")||"0";
                     >
                         <DrawerHeader/>
                         <Box sx={{overflow: "auto", py: 2, height: "100%"}}>
-                            {adminServices.filter(d=>loggedAccount?.role=="ADMIN"?true:!d.requireAdmin).map((a, index) => (
-                                <TabPanel index={""+index} value={value} key={"tab" + index}>
+                            {adminServices.filter(d => loggedAccount?.role == "ADMIN" ? true : !d.requireAdmin).map((a, index) => (
+                                <TabPanel index={"" + index} value={value} key={"tab" + index}>
                                     {a?.component}
                                 </TabPanel>
                             ))}
-                            {adminServices.findIndex((d,i):any=>loggedAccount?.role=="ADMIN"?true:!d.requireAdmin&&""+i==value)==-1&& <TabPanel index={"aa"} value={"aa"} key={"tab" + "index"}>
-                                <Forbidden/>
-                            </TabPanel>}
+                            {adminServices.findIndex((d, i): any => loggedAccount?.role == "ADMIN" ? true : !d.requireAdmin && "" + i == value) == -1 &&
+                                <TabPanel index={"aa"} value={"aa"} key={"tab" + "index"}>
+                                    <Forbidden/>
+                                </TabPanel>}
                         </Box>
                     </Box>
                 </Box>
-            ) : (<div style={{height:'100vh'}}><Forbidden/></div>
+            ) : (<div style={{height: '100vh'}}><Forbidden/></div>
 
             )}
         </>

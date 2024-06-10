@@ -1,5 +1,6 @@
 const nextConfig = {
-    // ignoreBuildErrors: true,
+     //ignoreBuildErrors:true,
+    //ignoreDuringBuilds: true,
     reactStrictMode: false,
 };
 

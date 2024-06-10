@@ -42,7 +42,7 @@ export default function ForgotPassword() {
             //throw new Error("user doesnt exisit");
             showInformation(error.data);
 
-           // throw  Error(error.data)
+            // throw  Error(error.data)
         }
     };
     const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {

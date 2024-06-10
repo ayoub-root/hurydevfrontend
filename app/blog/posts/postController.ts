@@ -1,8 +1,8 @@
-import {axiosApi, showInformation} from "../../../../components/utilis";
+import {axiosApi, showInformation} from "../../../components/utilis";
 
 export async function addToSavedList(data: any) {
 
- await   axiosApi.post("/users/saveditems", {
+    await axiosApi.post("/users/saveditems", {
 
         title: data?.title,
         type: data?.type,
@@ -36,7 +36,7 @@ export async function removeFromSavedList(slug: any) {
 }
 
 export async function handleRaction(postId: string, type: number) {
- await   axiosApi.post(`/posts/${postId}/react`, {
+    await axiosApi.post(`/posts/${postId}/react`, {
 
         type: type
     }).then(e => {

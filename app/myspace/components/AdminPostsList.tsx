@@ -1,7 +1,7 @@
 import * as React from "react";
 import Box from "@mui/material/Box";
 import {DataGrid, GridActionsCellItem, GridColDef} from "@mui/x-data-grid";
-import {Add, ArrowBack, Delete, Edit, OpenInBrowser, OpenInNew, Preview} from "@mui/icons-material";
+import {Add, ArrowBack, Delete, Edit, OpenInNew, Preview} from "@mui/icons-material";
 import {Button, Container, Dialog, DialogContent, IconButton, styled,} from "@mui/material";
 import {axiosApi, formatDateTime, showInformation} from "components/utilis";
 import MyDialog from "components/MyDialog";
@@ -153,7 +153,7 @@ export default function AdminPostsList() {
             headerName: "Url",
             renderCell: (value) => (
                 <a target="_blank" href={"/blog/posts/" + value?.value}>
-                   <OpenInNew/>
+                    <OpenInNew/>
                 </a>
             ),
         },
@@ -190,7 +190,7 @@ export default function AdminPostsList() {
                 ];
             },
 
-        },  {
+        }, {
             field: "createdAt",
             headerName: "Created at",
             description: "This column has a value getter and is not sortable.",
@@ -244,7 +244,7 @@ export default function AdminPostsList() {
                 .then((reponse) => reponse.data)
                 .then((json) => {
                     console.log(json);
-                        setPosts(json.content);
+                    setPosts(json.content);
                     setPagesCount(json?.totalPages);
                     //setCurrentPage(0);
                     //setPages(json?.pages);
@@ -257,21 +257,21 @@ export default function AdminPostsList() {
                 });
         };
         getStories();
-    }, [setLoading, currentPage,update]);
+    }, [setLoading, currentPage, update]);
 
 
     const deletePost = async (slug: any) => {
-      setLoading(true);
+        setLoading(true);
         await axiosApi
             .delete(`/posts/${slug}`)
             .then((reponse) => reponse.data)
             .then((json) => {
 
-                setUpdate(r=>r+1)
+                setUpdate(r => r + 1)
                 setLoading(false);
             })
             .catch((erro) => {
-               showInformation(erro?.response.data);
+                showInformation(erro?.response.data);
                 setLoading(false);
             });
     };
@@ -315,7 +315,7 @@ export default function AdminPostsList() {
 
                     setEditPost(null);
                     setNewPost(false)
-                    setUpdate(r=>r+1)
+                    setUpdate(r => r + 1)
                 }}
                          editPost={editPost}
                 />

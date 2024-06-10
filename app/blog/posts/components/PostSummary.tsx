@@ -63,7 +63,7 @@ export default function PostSummary(props: { htmlContent: any; }) {
     }
 
     return (
-        <Box sx={{ flexGrow: 1, maxWidth: 400}}>
+        <Box sx={{flexGrow: 1, maxWidth: 400}}>
             <Typography fontWeight={600} p={"15px"} fontSize={18}>Table of content</Typography>
             <RichTreeView defaultChecked={true}
                           items={hierarchy}

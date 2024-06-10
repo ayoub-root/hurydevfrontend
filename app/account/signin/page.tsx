@@ -5,7 +5,6 @@ import Button from "@mui/material/Button";
 import TextField from "@mui/material/TextField";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Checkbox from "@mui/material/Checkbox";
-import Link from "@mui/material/Link";
 import Paper from "@mui/material/Paper";
 import Box from "@mui/material/Box";
 import Grid from "@mui/material/Grid";
@@ -54,17 +53,17 @@ export default function Signin() {
                 keepLogged: Boolean(keepLogged),
             })
                 .then((e: any) => {
-if(e.status==200){
-    setLoading(false);
-    // alert(JSON.stringify(e.data?.user))
-    dispatch(login( e?.data));
-       dispatch(toggleOpenLogin())
-    if (e.data?.role == "ADMIN") {
-        router.replace("/myspace");
-    } else {
-        router.replace("/blog");
-    }
-}
+                    if (e.status == 200) {
+                        setLoading(false);
+                        // alert(JSON.stringify(e.data?.user))
+                        dispatch(login(e?.data));
+                        dispatch(toggleOpenLogin())
+                        if (e.data?.role == "ADMIN") {
+                            router.replace("/myspace");
+                        } else {
+                            router.replace("/blog");
+                        }
+                    }
 
                 })
                 .catch((e) => {
@@ -172,7 +171,7 @@ if(e.status==200){
                             }}
                         />
                         <FormControlLabel
-                            control={<Checkbox  checked={true}  value="remember" color="primary"/>}
+                            control={<Checkbox checked={true} value="remember" color="primary"/>}
                             label="Remember me (enabled by default)"
                         />
                         {"" + isLoading}
@@ -182,13 +181,13 @@ if(e.status==200){
                             variant="contained"
                             sx={{mt: 3, mb: 2}}
                             onClick={async () => {
-                              await  handleLogin();
+                                await handleLogin();
                             }}
                         >
                             Sign In
                         </Button>
                         <Grid container>
-                            <Grid item >
+                            <Grid item>
                                 <Button variant="text" onClick={() => {
                                     dispatch(toggleOpenLogin())
                                     //dispatch(toggleOpenRegister())

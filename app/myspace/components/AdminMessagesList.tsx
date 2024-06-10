@@ -115,7 +115,7 @@ export default function AdminMessagesList() {
             headerName: "Email",
             width: 150,
             editable: false,
-        },  {
+        }, {
             field: "createdAt",
             headerName: "Created at",
             description: "This column has a value getter and is not sortable.",
@@ -219,14 +219,14 @@ export default function AdminMessagesList() {
                 });
         };
         getStories();
-    }, [setLoading, currentPage,update]);
+    }, [setLoading, currentPage, update]);
 
     const deletePost = async (slug: any) => {
         await axiosApi
             .delete(`/messages/${slug}`)
             .then((reponse) => reponse.data)
             .then((json) => {
-                setUpdate(r=>r+1)
+                setUpdate(r => r + 1)
                 setLoading(false);
             })
             .catch((erro) => {
@@ -277,7 +277,7 @@ export default function AdminMessagesList() {
                 }}
             >
                 <ContactUs onClose={() => {
-                    setUpdate(r=>r+1)
+                    setUpdate(r => r + 1)
                     setNewPost(false)
                 }}/>
             </MyDialog>

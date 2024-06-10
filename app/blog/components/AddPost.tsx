@@ -7,7 +7,7 @@ import "suneditor/dist/css/suneditor.min.css"; // Import Sun Editor's CSS File
 import {CustomMultipleFilter, CustomSingleFilter} from "./CustomFilter";
 import {axiosApi, showInformation} from "components/utilis";
 import FileUploadButton from "components/FileUploadButton";
-import JoditEditorComponent from "./joedit/JoditEditorComponent";
+import JoditEditorComponent from "./JoditEditorComponent";
 
 const defaultFonts = [
     "Arial",

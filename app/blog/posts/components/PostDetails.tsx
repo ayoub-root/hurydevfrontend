@@ -42,21 +42,22 @@ const PostDetails = ({params: {slug}, isDialog}: { params: { slug: string }, isD
     const [update, setUpdate] = useState<number>(0);
 
     function addIdToTags2(htmlContent: string) {
-       // const parser = new DOMParser();
-       // const doc = parser.parseFromString(htmlContent, 'text/html');
-       // const tags = doc.body.getElementsByTagName('*');
+        // const parser = new DOMParser();
+        // const doc = parser.parseFromString(htmlContent, 'text/html');
+        // const tags = doc.body.getElementsByTagName('*');
 
-       // Array.from(tags).forEach((tag, index) => {
-         //   tag.id = `cstm-id-${index + 1}`;
+        // Array.from(tags).forEach((tag, index) => {
+        //   tag.id = `cstm-id-${index + 1}`;
         //});
 
         //return doc.body.innerHTML;
     }
-    function addIdToTags(htmlContent:string) {
+
+    function addIdToTags(htmlContent: string) {
         let tagCounter = 1;
 
         // Use a regular expression to match all opening tags
-        return htmlContent.replace(/(<\s*([a-zA-Z0-9]+)(\s+[^>]*)?)/g, (match, p1, p2):any => {
+        return htmlContent.replace(/(<\s*([a-zA-Z0-9]+)(\s+[^>]*)?)/g, (match, p1, p2): any => {
             // Construct the new tag with an id attribute
             return `${p1} id="cstm-id-${tagCounter++}"`;
         });
@@ -64,7 +65,7 @@ const PostDetails = ({params: {slug}, isDialog}: { params: { slug: string }, isD
 
     const dispatch = useDispatch()
     const post = useSelector((state: RootState) => state.selectedStory)?.selectedStory;
-    const comments=post?.comments? [...post?.comments]?.sort((a:any,b:any)=> new Date(b?.createdAt)?.getTime() - new Date(a.createdAt)?.getTime()):[];
+    const comments = post?.comments ? [...post?.comments]?.sort((a: any, b: any) => new Date(b?.createdAt)?.getTime() - new Date(a.createdAt)?.getTime()) : [];
     useEffect(() => {
         const getDetailStory = async () => {
             setLoading(true);
@@ -88,7 +89,7 @@ const PostDetails = ({params: {slug}, isDialog}: { params: { slug: string }, isD
             }
         };
         getDetailStory();
-    }, [slug,   update]);
+    }, [slug, update]);
     const [newComment, setNewComment] = React.useState<any>(null);
     const loggedAccount = useSelector(
         (state: RootState) => state.loggedAccount)?.loggedAccount;
@@ -106,7 +107,7 @@ const PostDetails = ({params: {slug}, isDialog}: { params: { slug: string }, isD
             showInformation("Add comment successfully ");
             setUpdate((e: number) => (e + 1));
             setCommentLoading(false);
-          setUpdate(e=>e+1)
+            setUpdate(e => e + 1)
             //   setNewPost(empty);
             // setTimeout(() => {
             //   //  alert("ok");
@@ -123,13 +124,14 @@ const PostDetails = ({params: {slug}, isDialog}: { params: { slug: string }, isD
     return <Grid sx={{}}>
         <LoadingPage open={loading} onClose={() => setLoading(false)}/>
         <Box
-            sx={{paddingInline:"15px",
-                paddingBlock:"10px 0px",
+            sx={{
+                paddingInline: "15px",
+                paddingBlock: "10px 0px",
                 display: post ? "flex" : "none",
                 height: isDialog ? "calc(100vh - 5px)" : "calc(100vh - 65px)",
                 flexGrow: 1,
-                backgroundColor: "background.paper",width:'100%',
-               // border:'solid blue',
+                backgroundColor: "background.paper", width: '100%',
+                // border:'solid blue',
                 flexDirection: isSmallScreen ? "column" : "row",
                 gap: isSmallScreen ? 0 : "0px",
             }}
@@ -142,7 +144,7 @@ const PostDetails = ({params: {slug}, isDialog}: { params: { slug: string }, isD
                     flexDirection: "column",
                     minWidth: "230px",
                     overflow: "auto",
-                    height:'auto'
+                    height: 'auto'
                     //border: "solid",
                 }}
             >
@@ -312,54 +314,54 @@ const PostDetails = ({params: {slug}, isDialog}: { params: { slug: string }, isD
                         >
 
                             {comments?.map((cmt: any, index: number) => <TimelineItem key={index}>
-                                    <TimelineSeparator>
-                                        <Avatar
-                                            sx={{textTransform: 'uppercase'}}
-                                            title={cmt?.createdBy?.firstname + " " + cmt?.createdBy?.lastname}
-                                            src={
-                                                process.env.NEXT_PUBLIC_ONLINE_WS_URI +
-                                                "/images/profiles/" +
-                                                (cmt?.createdBy?.avatar ?
-                                                    cmt?.createdBy?.avatar : "photo.png")
-                                            }
+                                <TimelineSeparator>
+                                    <Avatar
+                                        sx={{textTransform: 'uppercase'}}
+                                        title={cmt?.createdBy?.firstname + " " + cmt?.createdBy?.lastname}
+                                        src={
+                                            process.env.NEXT_PUBLIC_ONLINE_WS_URI +
+                                            "/images/profiles/" +
+                                            (cmt?.createdBy?.avatar ?
+                                                cmt?.createdBy?.avatar : "photo.png")
+                                        }
 
-                                        >{cmt?.createdBy?.firstname[0] + "" + cmt?.createdBy?.lastname[0]}</Avatar>
-                                        {index != defultTabList.length - 1 && <TimelineConnector/>}
-                                    </TimelineSeparator>
-                                    <TimelineContent>
-                                        <div style={{display: 'flex', justifyContent: 'start', columnGap: "10px"}}>
-                                            <Typography fontWeight={600} paddingX={'0px 10px'} noWrap
-                                                        display={"flex"}
-                                                        alignItems={"center"} columnGap={"10px"}>
-                                                <Typography fontWeight={600}
-                                                            sx={{textTransform: "capitalize"}}>{cmt?.createdBy?.firstname}</Typography>
-                                                <Typography fontWeight={600}
-                                                            sx={{textTransform: "uppercase"}}>{cmt?.createdBy?.lastname}</Typography>
-                                            </Typography> |
-                                            <Typography> {timeAgo(new Date(cmt?.createdAt))}</Typography>
-                                        </div>
-                                        <div>
-                                            <Typography variant={"body2"} color="text.secondary"
-                                            ><pre style={{
-                                                whiteSpace: "pre-wrap",
-                                                fontFamily: "cursive",
+                                    >{cmt?.createdBy?.firstname[0] + "" + cmt?.createdBy?.lastname[0]}</Avatar>
+                                    {index != defultTabList.length - 1 && <TimelineConnector/>}
+                                </TimelineSeparator>
+                                <TimelineContent>
+                                    <div style={{display: 'flex', justifyContent: 'start', columnGap: "10px"}}>
+                                        <Typography fontWeight={600} paddingX={'0px 10px'} noWrap
+                                                    display={"flex"}
+                                                    alignItems={"center"} columnGap={"10px"}>
+                                            <Typography fontWeight={600}
+                                                        sx={{textTransform: "capitalize"}}>{cmt?.createdBy?.firstname}</Typography>
+                                            <Typography fontWeight={600}
+                                                        sx={{textTransform: "uppercase"}}>{cmt?.createdBy?.lastname}</Typography>
+                                        </Typography> |
+                                        <Typography> {timeAgo(new Date(cmt?.createdAt))}</Typography>
+                                    </div>
+                                    <div>
+                                        <Typography variant={"body2"} color="text.secondary"
+                                        ><pre style={{
+                                            whiteSpace: "pre-wrap",
+                                            fontFamily: "cursive",
 
-                                                paddingInline: '5px', color: 'body2'
-                                            }}>{cmt?.content}</pre>
-                                            </Typography>
-                                        </div>
-                                        <div style={{
-                                            display: 'none',
-                                            justifyContent: 'start',
-                                            alignItems: "center",
-                                            columnGap: "10px"
-                                        }}>
-                                            <Button>Like</Button> | <Button>Reply</Button>
-                                            <IconButton><Favorite/></IconButton>
+                                            paddingInline: '5px', color: 'body2'
+                                        }}>{cmt?.content}</pre>
+                                        </Typography>
+                                    </div>
+                                    <div style={{
+                                        display: 'none',
+                                        justifyContent: 'start',
+                                        alignItems: "center",
+                                        columnGap: "10px"
+                                    }}>
+                                        <Button>Like</Button> | <Button>Reply</Button>
+                                        <IconButton><Favorite/></IconButton>
 
-                                        </div>
-                                    </TimelineContent>
-                                </TimelineItem>)}
+                                    </div>
+                                </TimelineContent>
+                            </TimelineItem>)}
 
 
                         </Timeline>
@@ -391,27 +393,27 @@ const PostDetails = ({params: {slug}, isDialog}: { params: { slug: string }, isD
                         //  columns={{ xs: 4, sm: 8, md: 8, lg: 12 }}
                     >
                         {defultTabList.map((cpost, index: number) => <Grid
-                                key={index}
-                                sx={{minWidth: "350px", minHeight: "300px"}}
-                                // border="solid red"
-                                display={"flex"}
-                                justifyContent={"center"}
-                            >
-                                test rrelated post
-                            </Grid>)}
+                            key={index}
+                            sx={{minWidth: "350px", minHeight: "300px"}}
+                            // border="solid red"
+                            display={"flex"}
+                            justifyContent={"center"}
+                        >
+                            test rrelated post
+                        </Grid>)}
                     </Box>
                 </Box>
             </Box>
             <Grid
                 sx={{
-                   // position:"absolute",
+                    // position:"absolute",
                     //bottom:0,
-                  //  width: "50px",
+                    //  width: "50px",
                     display: "flex",
-                 //   marginRight: "-70px",
-                     //  border: "solid",
-                    justifyContent:"center",
-                    alignItems:"center",padding:"10px"
+                    //   marginRight: "-70px",
+                    //  border: "solid",
+                    justifyContent: "center",
+                    alignItems: "center", padding: "10px"
                 }}
             >
                 <PostActions

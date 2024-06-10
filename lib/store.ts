@@ -21,7 +21,7 @@ export const store = configureStore({
         messagesList: messagesSlicer,
         usersList: usersSlicer,
         appSettings: appSlicer,
-        selectedStory:storySlicer,
+        selectedStory: storySlicer,
     },
 });
 

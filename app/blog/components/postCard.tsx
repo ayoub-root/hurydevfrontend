@@ -1,4 +1,5 @@
 import * as React from "react";
+import {useState} from "react";
 import Card from "@mui/material/Card";
 import CardActions from "@mui/material/CardActions";
 import CardContent from "@mui/material/CardContent";
@@ -10,7 +11,7 @@ import {Bookmark, BookmarkAddOutlined, MoreVertOutlined, OpenInNew,} from "@mui/
 import Link from "next/link";
 import LoadingPage from "app/LoadingPage";
 import {formatTextDateTime, timeAgo} from "../../../components/utilis";
-import {addToSavedList, getSavedList, removeFromSavedList} from "../posts/controllers/postController";
+import {addToSavedList, getSavedList, removeFromSavedList} from "../posts/postController";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "../../../lib/store";
 import ReactionsCounter from "../posts/components/ReactionsCounter";
@@ -18,11 +19,10 @@ import ShowTags from "../posts/components/ShowTags";
 import Tooltip from "@mui/material/Tooltip";
 import {ShareButton} from "../posts/components/PostActions";
 import {updateLoggedAccount} from "../../../lib/reducers/accountSlicer";
-import {useState} from "react";
 
 export default function PostCard(props: any) {
     const article = props?.data;
-   const [loading, setLoading]=useState<boolean>(false)
+    const [loading, setLoading] = useState<boolean>(false)
     const dispatch = useDispatch()
     const savedItems = useSelector(
         (state: RootState) => state.loggedAccount)?.loggedAccount?.savedItems;
@@ -108,29 +108,26 @@ export default function PostCard(props: any) {
                                 if (isBookMarked) {
 
 
-
-                                           await removeFromSavedList(article?.slug).then(async ()=>{
-                                               await getSavedList().then(async(data:any)=>{
-                                              //     alert(JSON.stringify(data))
-                                                   setLoading(false);
-                                                   dispatch(updateLoggedAccount({savedItems:data}))
-                                               })
-                                            })
-
+                                    await removeFromSavedList(article?.slug).then(async () => {
+                                        await getSavedList().then(async (data: any) => {
+                                            //     alert(JSON.stringify(data))
+                                            setLoading(false);
+                                            dispatch(updateLoggedAccount({savedItems: data}))
+                                        })
+                                    })
 
 
-                                } else
-                                {
+                                } else {
                                     await addToSavedList({
                                         title: article?.title,
                                         type: "posts",
                                         value: article?.slug,
                                         image: article?.image
-                                    }).then(async ()=>
+                                    }).then(async () =>
 
-                                        await getSavedList().then(async(data:any)=>{
-                                          //  alert(JSON.stringify(data))
-                                            dispatch(updateLoggedAccount({savedItems:data}))
+                                        await getSavedList().then(async (data: any) => {
+                                            //  alert(JSON.stringify(data))
+                                            dispatch(updateLoggedAccount({savedItems: data}))
                                             setLoading(false);
                                         })
                                     )
@@ -143,15 +140,15 @@ export default function PostCard(props: any) {
                         sx={{borderRadius: 12, fontSize: "15px", padding: "3px 7px"}}
                     >
                         {" "}
-                        <Link title={"Open in new page"}
-                              href="/blog/posts/[slug]"
+                        <a title={"Open in new page"}
+                            //  href="/blog/posts/[slug]"
                               target="_blank"
-                              as={`/blog/posts/${article?.slug}`}
+                              href={`/blog/posts/${article?.slug}`}
                               style={{display: "flex", alignItems: "center", columnGap: "3px"}}
                         >
 
                             <OpenInNew sx={{fontSize: "25px"}}/>{" "}
-                        </Link>
+                        </a>
 
                     </IconButton></div>
             </CardActions>

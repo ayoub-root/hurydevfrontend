@@ -17,7 +17,6 @@ import {axiosApi, formatDateTime} from "components/utilis";
 import MyDialog from "components/MyDialog";
 import LoadingPage from "app/LoadingPage";
 import AddMyCv from "../../portfolio/components/AddMyCv";
-import Tooltip from "@mui/material/Tooltip";
 
 const rows = [
     {id: 1, lastName: "Snow", firstName: "Jon", age: 14},
@@ -168,7 +167,7 @@ export default function AdminMyCvsList() {
                 <a target="_blank" rel="noopener noreferrer"
                    href={`${process.env.NEXT_PUBLIC_ONLINE_WS_URI}/myfiles/mycvs/${value?.value}`}>
 
-                        <OpenInNew/>
+                    <OpenInNew/>
 
                 </a>
 
@@ -345,7 +344,7 @@ export default function AdminMyCvsList() {
                 </DialogTitle>
                 <DialogContent dividers={true} style={{paddingBlock: "30px"}}>
                     <Container maxWidth="lg">
-                       {/* <CVBuilder /> */}
+                        {/* <CVBuilder /> */}
                         <pre
                             style={{
                                 whiteSpace: "pre-wrap",

@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import {useRef} from "react";
 import Box from "@mui/material/Box";
 import Card from "@mui/material/Card";
 
@@ -17,9 +18,7 @@ import ContactUs from "components/ContactUs";
 import "../../public/style/style.css";
 import Head from "next/head";
 import ReactGA from "react-ga4";
-import {useRef} from "react";
 import LoadingPage from "../LoadingPage";
-import {Skeleton} from "@mui/lab";
 import CustomSkeleton from "../../components/CustomSkeleton";
 
 export default function Portfolio() {
@@ -76,8 +75,8 @@ export default function Portfolio() {
                 .get(`/mycvs`)
                 .then((reponse) => {
                     setCvList(reponse.data.content)
-                    const json=reponse.data.content[0]
-                 //   alert(cvList.length)
+                    const json = reponse.data.content[0]
+                    //   alert(cvList.length)
                     setSelectedCv(json)
                     setMyProfile({
                         ...JSON.parse(json?.content || ""),
@@ -87,7 +86,7 @@ export default function Portfolio() {
                         language: json?.language,
                         lastUpdate: formatDateTime(new Date(json?.updatedAt ? json?.updatedAt : json?.createdAt)),
                     })
-setLoading(false)
+                    setLoading(false)
                 }).catch((erro) => {
                     console.log(erro);
                     setLoading(false);
@@ -98,7 +97,7 @@ setLoading(false)
 
     return (
         <Grid container columnSpacing={4} p={3} sx={{height: "100vh"}}>
-            <LoadingPage open={loading} onClose={()=>setLoading(false)}/>
+            <LoadingPage open={loading} onClose={() => setLoading(false)}/>
             <Head>
                 <title>{"Ayoub Benayache portfolio"}</title>
                 <meta property="og:title" content={"Ayoub Benayache portfolio"}/>
@@ -127,310 +126,312 @@ setLoading(false)
                 sx={{height: "100%", overflow: "auto"}}
             >
                 {loading ? (
-                    <CustomSkeleton  />
+                    <CustomSkeleton/>
                 ) : (
                     <Box
-                    sx={{
-                        // border: "solid",
-                        height: "100%",
-                        px: 5,
-                        py: 2,
-                        borderRadius: "12px",
-                        border: "solid 1px #eee5",
-                        backgroundColor: "background.cvcontainer",
-                        overflow: "auto",
-                    }}
-                >
-                    <div
-                        style={{
-                            justifyContent: "center",
-                            display: "flex",
-                            flexDirection: "column",
-                            alignItems: "center",
+                        sx={{
+                            // border: "solid",
+                            height: "100%",
+                            px: 5,
+                            py: 2,
+                            borderRadius: "12px",
+                            border: "solid 1px #eee5",
+                            backgroundColor: "background.cvcontainer",
+                            overflow: "auto",
                         }}
                     >
                         <div
                             style={{
-                                position: "static",
-                                marginBottom: "-45px",
-                                zIndex: 1,
+                                justifyContent: "center",
                                 display: "flex",
-                                justifyContent: "space-between",
-                                top: 0,
-                                // border: "solid",
+                                flexDirection: "column",
                                 alignItems: "center",
-                                width: "115%",
                             }}
                         >
-                            <Link href="/">
-                                <IconButton>
-                                    <ArrowBack/>
-                                </IconButton>
-                            </Link>
-                            <ToggleColorMode/>
-                        </div>
-                        {" "}
-                        <div
-                            style={{ marginBlock:'-5px 5px',
-                                border: "solid 1px #ccc5",
-                                position: "relative",
-
-                                borderRadius: "99%",
-                                padding: "10px",
-                                display: "inline-block",
-                                fontSize: "12px",
-                                background:
-                                    profileStatus.filter(
-                                        (r) => r?.title == myProfile?.status?.title
-                                    )[0]?.background || profileStatus[0]?.background,
-                            }}
-                        >
-                            <Avatar
-                                src={myProfile?.photoUrl}
-                                sx={{
-                                    width: "90px",
-                                    height: "90px",
-                                    border: "solid 1px #eee5",
-                                }}
-                            />
-                            <svg
-                                className="fade-in"
-                                viewBox="0 0  500 500"
+                            <div
                                 style={{
-                                    position: "absolute",
+                                    position: "static",
+                                    marginBottom: "-45px",
+                                    zIndex: 1,
+                                    display: "flex",
+                                    justifyContent: "space-between",
                                     top: 0,
-                                    left: 0,
-
-                               //      border: "solid",
+                                    // border: "solid",
+                                    alignItems: "center",
+                                    width: "115%",
                                 }}
                             >
-                                <path
-                                    fill="transparent"
-                                    id="curve"
-                                    d="M 45 250 A 100 100 0 1 1 455 250"
-                                    // transform="rotate(90, 50 50)"
-                                />
-                                <text width={myProfile?.status?.title.length}>
-                                    <textPath
-                                        startOffset={"30%"}
-                                        href="#curve"
-                                        fontWeight={"bold"}
-                                        fill={
-                                            profileStatus.filter(
-                                                (r) => r?.title == myProfile?.status?.title
-                                            )[0]?.color || profileStatus[0]?.color
-                                        }
-                                        fontSize={"50px"}
-                                    >
-                                        {myProfile?.status?.title}
-                                    </textPath>
-                                </text>
-                            </svg>
-                        </div>
-                        <Select key={selectedCv} size={"small"} value={selectedCv}
+                                <Link href="/">
+                                    <IconButton>
+                                        <ArrowBack/>
+                                    </IconButton>
+                                </Link>
+                                <ToggleColorMode/>
+                            </div>
+                            {" "}
+                            <div
+                                style={{
+                                    marginBlock: '-5px 5px',
+                                    border: "solid 1px #ccc5",
+                                    position: "relative",
 
-                                onChange={(r: any) => {
-                            const json = r.target.value;
-                            setMyProfile({
-                                ...JSON.parse(json?.content || ""),
-                                photoUrl: process.env.NEXT_PUBLIC_ONLINE_WS_URI + "/myfiles/cvphoto/" + json?.photoUrl,
-                                cvUrl: process.env.NEXT_PUBLIC_ONLINE_WS_URI + "/myfiles/mycvs/" + json?.fileUrl,
-                                title: json.title,
-                                language: json?.language,
-                                lastUpdate: formatDateTime(new Date(json?.updatedAt ? json?.updatedAt : json?.createdAt)),
-                            });
-                            setSelectedCv(r.target.value)
-                        }}>
-                            {cvList.map((r: any) => <MenuItem key={r?.id} value={r}>{r?.title} - ({r?.language})</MenuItem>)}
-                        </Select>
-                    </div>
-                    <Box>
-                        <Typography
-                            sx={{
-                                padding: "10px",
-                                fontSize: "24px",
-                                display: "flex",
-                                columnGap: "3px",
-                                justifyContent: "center",
-                                fontWeight: 700,
-                            }}
-                        >
+                                    borderRadius: "99%",
+                                    padding: "10px",
+                                    display: "inline-block",
+                                    fontSize: "12px",
+                                    background:
+                                        profileStatus.filter(
+                                            (r) => r?.title == myProfile?.status?.title
+                                        )[0]?.background || profileStatus[0]?.background,
+                                }}
+                            >
+                                <Avatar
+                                    src={myProfile?.photoUrl}
+                                    sx={{
+                                        width: "90px",
+                                        height: "90px",
+                                        border: "solid 1px #eee5",
+                                    }}
+                                />
+                                <svg
+                                    className="fade-in"
+                                    viewBox="0 0  500 500"
+                                    style={{
+                                        position: "absolute",
+                                        top: 0,
+                                        left: 0,
+
+                                        //      border: "solid",
+                                    }}
+                                >
+                                    <path
+                                        fill="transparent"
+                                        id="curve"
+                                        d="M 45 250 A 100 100 0 1 1 455 250"
+                                        // transform="rotate(90, 50 50)"
+                                    />
+                                    <text width={myProfile?.status?.title.length}>
+                                        <textPath
+                                            startOffset={"30%"}
+                                            href="#curve"
+                                            fontWeight={"bold"}
+                                            fill={
+                                                profileStatus.filter(
+                                                    (r) => r?.title == myProfile?.status?.title
+                                                )[0]?.color || profileStatus[0]?.color
+                                            }
+                                            fontSize={"50px"}
+                                        >
+                                            {myProfile?.status?.title}
+                                        </textPath>
+                                    </text>
+                                </svg>
+                            </div>
+                            <Select key={selectedCv} size={"small"} value={selectedCv}
+
+                                    onChange={(r: any) => {
+                                        const json = r.target.value;
+                                        setMyProfile({
+                                            ...JSON.parse(json?.content || ""),
+                                            photoUrl: process.env.NEXT_PUBLIC_ONLINE_WS_URI + "/myfiles/cvphoto/" + json?.photoUrl,
+                                            cvUrl: process.env.NEXT_PUBLIC_ONLINE_WS_URI + "/myfiles/mycvs/" + json?.fileUrl,
+                                            title: json.title,
+                                            language: json?.language,
+                                            lastUpdate: formatDateTime(new Date(json?.updatedAt ? json?.updatedAt : json?.createdAt)),
+                                        });
+                                        setSelectedCv(r.target.value)
+                                    }}>
+                                {cvList.map((r: any) => <MenuItem key={r?.id} value={r}>{r?.title} -
+                                    ({r?.language})</MenuItem>)}
+                            </Select>
+                        </div>
+                        <Box>
+                            <Typography
+                                sx={{
+                                    padding: "10px",
+                                    fontSize: "24px",
+                                    display: "flex",
+                                    columnGap: "3px",
+                                    justifyContent: "center",
+                                    fontWeight: 700,
+                                }}
+                            >
               <span style={{textTransform: "capitalize"}}>
                 {myProfile?.firstName}
               </span>{" "}
-                            <span style={{textTransform: "uppercase"}}>
+                                <span style={{textTransform: "uppercase"}}>
                 {myProfile?.lastName}
               </span>
-                        </Typography>
-                        <Typography
-                            sx={{
-                                padding: "0px",
-                                fontSize: "14px",
-                                display: "flex",
-                                columnGap: "3px",
-                                justifyContent: "center",
-                                fontWeight: 700,
-                                textAlign: "center",
-                                marginBottom: "20px",
-                                color:"text.secondary"
-                            }}
-                        >
-                            {myProfile?.titles?.join(" | ")}
-                        </Typography>
-
-                        <Typography
-                            sx={{
-                                padding: "5px",
-                                fontSize: "15px",
-                                display: "flex",
-                                columnGap: "3px",
-                                justifyContent: "start",
-                                fontWeight: 700,
-                            }}
-                        >
-                            <span style={{textTransform: "capitalize"}}>Mobile: </span>{" "}
-                            <Typography sx={{textTransform: "uppercase", fontWeight: 500,  color:"text.secondary"}}>
-                {myProfile?.mobile?.join(", ")}
-              </Typography>
-                        </Typography>
-                        <Typography
-                            sx={{
-                                padding: "5px",
-                                fontSize: "15px",
-                                display: "flex",
-                                columnGap: "3px",
-                                justifyContent: "start",
-                                fontWeight: 700,
-                            }}
-                        >
-                            <span style={{textTransform: "capitalize"}}>Emails: </span>{" "}
-                            <Typography sx={{textTransform: "inherit", fontWeight: 500,  color:"text.secondary"}}>
-                {myProfile?.emails?.join(", ")}
-              </Typography>
-                        </Typography>
-                        <Typography
-                            sx={{
-                                padding: "5px",
-                                fontSize: "15px",
-                                display: "flex",
-                                columnGap: "3px",
-                                justifyContent: "start",
-                                fontWeight: 700,
-                            }}
-                        >
-                            <span style={{textTransform: "capitalize"}}>Address: </span>{" "}
-                            <Typography sx={{textTransform: "inherit", fontWeight: 500,  color:"text.secondary"}}>
-                {myProfile?.addresses?.join(", ")}
-              </Typography>
-                        </Typography>
-                        <Box
-                            sx={{
-                                padding: "5px",
-                                fontSize: "15px",
-                                display: "flex",
-                                columnGap: "3px",
-                                justifyContent: "center",
-                                fontWeight: 700,
-                            }}
-                        >
-                            <SocialMedia/>
-                        </Box>
-                        <Typography
-                            sx={{
-                                padding: "15px",
-                                fontSize: "15px",
-                                display: "flex",
-                                columnGap: "15px",
-                                justifyContent: "center",
-                                fontWeight: 700,
-                            }}
-                        >
-                            <Button
-                                variant="outlined"
-                                onClick={() => {
-                                    setNewMessage(true);
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    padding: "0px",
+                                    fontSize: "14px",
+                                    display: "flex",
+                                    columnGap: "3px",
+                                    justifyContent: "center",
+                                    fontWeight: 700,
+                                    textAlign: "center",
+                                    marginBottom: "20px",
+                                    color: "text.secondary"
                                 }}
                             >
-                                <Typography noWrap>Contact me</Typography>
-                            </Button>
-                            <Button variant="outlined" onClick={handleDownload}>
-                                <Typography noWrap>Download CV</Typography>
-                            </Button>
-                        </Typography>
-                        <Divider/>
-                        <Grid
-                            container
-                            sx={{
-                                paddingTop: "5px",
-                                fontSize: "11px",
-                                //   paddingTop: "20px",
-                                display: "flex",
-                                gap: "10px",
-                                columnGap: "10px",
+                                {myProfile?.titles?.join(" | ")}
+                            </Typography>
 
-                                //    border: "solid",
-                                justifyContent: "center",
-                            }}
-                        >
-                            <MenuItem
-                                sx={{  fontSize: "12px"}}
-                                dense
-                                onClick={() => scrollToSection("aboutMe")}
+                            <Typography
+                                sx={{
+                                    padding: "5px",
+                                    fontSize: "15px",
+                                    display: "flex",
+                                    columnGap: "3px",
+                                    justifyContent: "start",
+                                    fontWeight: 700,
+                                }}
                             >
-                                About me 😊
-                            </MenuItem>
-                            <MenuItem
-                                sx={{background: "#7733EE33", fontSize: "12px"}}
-                                dense
-                                onClick={() => scrollToSection("education")}
+                                <span style={{textTransform: "capitalize"}}>Mobile: </span>{" "}
+                                <Typography sx={{textTransform: "uppercase", fontWeight: 500, color: "text.secondary"}}>
+                                    {myProfile?.mobile?.join(", ")}
+                                </Typography>
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    padding: "5px",
+                                    fontSize: "15px",
+                                    display: "flex",
+                                    columnGap: "3px",
+                                    justifyContent: "start",
+                                    fontWeight: 700,
+                                }}
                             >
-                                Education
-                            </MenuItem>{" "}
-                            <MenuItem
-                                sx={{background: "#77EE3333", fontSize: "12px"}}
-                                dense
-                                onClick={() => scrollToSection("experience")}
+                                <span style={{textTransform: "capitalize"}}>Emails: </span>{" "}
+                                <Typography sx={{textTransform: "inherit", fontWeight: 500, color: "text.secondary"}}>
+                                    {myProfile?.emails?.join(", ")}
+                                </Typography>
+                            </Typography>
+                            <Typography
+                                sx={{
+                                    padding: "5px",
+                                    fontSize: "15px",
+                                    display: "flex",
+                                    columnGap: "3px",
+                                    justifyContent: "start",
+                                    fontWeight: 700,
+                                }}
                             >
-                                Experiences
-                            </MenuItem>
-                            <MenuItem
-                                sx={{background: "#a112", fontSize: "12px"}}
-                                dense
-                                onClick={() => scrollToSection("skills")}
+                                <span style={{textTransform: "capitalize"}}>Address: </span>{" "}
+                                <Typography sx={{textTransform: "inherit", fontWeight: 500, color: "text.secondary"}}>
+                                    {myProfile?.addresses?.join(", ")}
+                                </Typography>
+                            </Typography>
+                            <Box
+                                sx={{
+                                    padding: "5px",
+                                    fontSize: "15px",
+                                    display: "flex",
+                                    columnGap: "3px",
+                                    justifyContent: "center",
+                                    fontWeight: 700,
+                                }}
                             >
-                                Skills
-                            </MenuItem>
-                            <MenuItem
-                                sx={{background: "#11e2", fontSize: "12px"}}
-                                dense
-                                onClick={() => scrollToSection("languages")}
+                                <SocialMedia/>
+                            </Box>
+                            <Typography
+                                sx={{
+                                    padding: "15px",
+                                    fontSize: "15px",
+                                    display: "flex",
+                                    columnGap: "15px",
+                                    justifyContent: "center",
+                                    fontWeight: 700,
+                                }}
                             >
-                                Languages
-                            </MenuItem>
-                            <MenuItem
-                                sx={{background: "#11e2", fontSize: "12px"}}
-                                dense
-                                onClick={() => scrollToSection("publications")}
+                                <Button
+                                    variant="outlined"
+                                    onClick={() => {
+                                        setNewMessage(true);
+                                    }}
+                                >
+                                    <Typography noWrap>Contact me</Typography>
+                                </Button>
+                                <Button variant="outlined" onClick={handleDownload}>
+                                    <Typography noWrap>Download CV</Typography>
+                                </Button>
+                            </Typography>
+                            <Divider/>
+                            <Grid
+                                container
+                                sx={{
+                                    paddingTop: "5px",
+                                    fontSize: "11px",
+                                    //   paddingTop: "20px",
+                                    display: "flex",
+                                    gap: "10px",
+                                    columnGap: "10px",
+
+                                    //    border: "solid",
+                                    justifyContent: "center",
+                                }}
                             >
-                                Publications
-                            </MenuItem>
-                            <MenuItem
-                                sx={{background: "#ae11", fontSize: "12px"}}
-                                dense
-                                onClick={() => scrollToSection("more")}
-                            >
-                                More
-                            </MenuItem>{" "}
-                            <MenuItem
-                                sx={{background: "#ae11", fontSize: "12px"}}
-                                dense
-                                onClick={() => scrollToSection("Interests")}
-                            >
-                                Interests
-                            </MenuItem>{" "}
-                        </Grid>
-                    </Box>
-                </Box>)}
+                                <MenuItem
+                                    sx={{fontSize: "12px"}}
+                                    dense
+                                    onClick={() => scrollToSection("aboutMe")}
+                                >
+                                    About me 😊
+                                </MenuItem>
+                                <MenuItem
+                                    sx={{background: "#7733EE33", fontSize: "12px"}}
+                                    dense
+                                    onClick={() => scrollToSection("education")}
+                                >
+                                    Education
+                                </MenuItem>{" "}
+                                <MenuItem
+                                    sx={{background: "#77EE3333", fontSize: "12px"}}
+                                    dense
+                                    onClick={() => scrollToSection("experience")}
+                                >
+                                    Experiences
+                                </MenuItem>
+                                <MenuItem
+                                    sx={{background: "#a112", fontSize: "12px"}}
+                                    dense
+                                    onClick={() => scrollToSection("skills")}
+                                >
+                                    Skills
+                                </MenuItem>
+                                <MenuItem
+                                    sx={{background: "#11e2", fontSize: "12px"}}
+                                    dense
+                                    onClick={() => scrollToSection("languages")}
+                                >
+                                    Languages
+                                </MenuItem>
+                                <MenuItem
+                                    sx={{background: "#11e2", fontSize: "12px"}}
+                                    dense
+                                    onClick={() => scrollToSection("publications")}
+                                >
+                                    Publications
+                                </MenuItem>
+                                <MenuItem
+                                    sx={{background: "#ae11", fontSize: "12px"}}
+                                    dense
+                                    onClick={() => scrollToSection("more")}
+                                >
+                                    More
+                                </MenuItem>{" "}
+                                <MenuItem
+                                    sx={{background: "#ae11", fontSize: "12px"}}
+                                    dense
+                                    onClick={() => scrollToSection("Interests")}
+                                >
+                                    Interests
+                                </MenuItem>{" "}
+                            </Grid>
+                        </Box>
+                    </Box>)}
             </Grid>
             <Grid
                 onScroll={() => {
@@ -445,8 +446,8 @@ setLoading(false)
                 sx={{height: "100%", overflow: "auto"}}
             >
                 {loading ? (
-                    <CustomSkeleton />
-                ) : (  <Box
+                    <CustomSkeleton/>
+                ) : (<Box
                     sx={{
                         backgroundColor: "background.cvcontainer",
                         borderRadius: "12px",
@@ -483,7 +484,7 @@ setLoading(false)
                                 borderRadius: "5px",
                                 color: "text.primary",
                                 padding: "30px",
-                               // bgcolor: "background.default2",
+                                // bgcolor: "background.default2",
                             }}
                         >
                             {myProfile?.aboutme}
@@ -512,7 +513,7 @@ setLoading(false)
                                         boxShadow: "0px 5px 15px 0px rgba(0, 0, 0, 0.2)",
                                         borderRadius: "0.1875rem",
                                         marginBlock: "25px",
-                                         backgroundColor: "background.default",
+                                        backgroundColor: "background.default",
                                         //  padding: "10px",
                                         //  paddingLeft: "-20px",
                                     }}
@@ -576,12 +577,13 @@ setLoading(false)
                                             >
                                                 {exp?.title}
                                             </Typography>
-                                            <Typography variant="h6"  fontSize={14} fontWeight={600}>
+                                            <Typography variant="h6" fontSize={14} fontWeight={600}>
                                                 {exp?.schools}
                                             </Typography>
                                             <ul>
                                                 {exp?.descriptions?.map((ee: any) => (
-                                                    <li  key={ee}><Typography color={'text.secondary'}><Typography color={'text.secondary'}>{ee}</Typography></Typography></li>
+                                                    <li key={ee}><Typography color={'text.secondary'}><Typography
+                                                        color={'text.secondary'}>{ee}</Typography></Typography></li>
                                                 ))}
                                             </ul>
                                             <div
@@ -690,7 +692,8 @@ setLoading(false)
                                             </Typography>
                                             <ul>
                                                 {exp?.descriptions?.map((ee: any) => (
-                                                    <li key={ee}><Typography color={'text.secondary'}>{ee}</Typography></li>
+                                                    <li key={ee}><Typography color={'text.secondary'}>{ee}</Typography>
+                                                    </li>
                                                 ))}
                                             </ul>
                                             <div
@@ -704,7 +707,8 @@ setLoading(false)
                                                 </Typography>
                                                 <ul>
                                                     {exp?.projects?.map((ee: any) => (
-                                                        <li key={ee}><Typography color={'text.secondary'}>{ee}</Typography></li>
+                                                        <li key={ee}><Typography
+                                                            color={'text.secondary'}>{ee}</Typography></li>
                                                     ))}
                                                 </ul>
                                                 {" "}
@@ -712,7 +716,7 @@ setLoading(false)
                                             <Grid
                                                 container
                                                 spacing={0.5}
-                                                sx={{ padding: "15px"}}
+                                                sx={{padding: "15px"}}
                                             >
                                                 {exp?.techs?.map((sk: any) => (
                                                     <Grid item key={sk}>
@@ -739,7 +743,7 @@ setLoading(false)
 
                         <Grid
                             container
-                            sx={{  padding: "15px"}}
+                            sx={{padding: "15px"}}
                         >
                             {myProfile?.skills?.map((sk: any) => (
                                 <Grid
@@ -762,7 +766,7 @@ setLoading(false)
                                         sx={{
                                             color: "text.primary",
                                             display: "flex",
-                                            padding:'3px',
+                                            padding: '3px',
                                             //  columnGap: "5px",
                                             alignItems: "center",
                                             width: "100%",
@@ -795,7 +799,7 @@ setLoading(false)
 
                         <Grid
                             container
-                            sx={{  padding: "15px"}}
+                            sx={{padding: "15px"}}
                         >
                             {myProfile?.languages?.map((sk: any) => (
                                 <Grid
@@ -823,7 +827,7 @@ setLoading(false)
                                             width: "100%",
                                             justifyContent: "space-between",
                                             columnGap: "5px",
-                                            padding:"3px"
+                                            padding: "3px"
                                         }}
                                     >
                                         <Typography>{sk?.title}</Typography>
@@ -851,7 +855,7 @@ setLoading(false)
 
                         <Grid
                             container
-                            sx={{  padding: "15px"}}
+                            sx={{padding: "15px"}}
                         >
                             {myProfile?.publications?.articles?.map((sk: any) => (
                                 <Grid
@@ -960,7 +964,7 @@ setLoading(false)
                             <Grid
                                 container
                                 spacing={0.5}
-                                sx={{  padding: "15px"}}
+                                sx={{padding: "15px"}}
                             >
                                 {myProfile?.interests?.map((sk: any) => (
                                     <Grid item key={sk}>

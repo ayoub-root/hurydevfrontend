@@ -12,8 +12,6 @@ import Grid from "@mui/material/Grid";
 import LockOutlinedIcon from "@mui/icons-material/LockOutlined";
 import Typography from "@mui/material/Typography";
 import {Divider} from "@mui/material";
-import {GoogleLogin} from "@react-oauth/google";
-import jwt from "jsonwebtoken";
 import {userRegister} from "app/account/controllers/UserRegister";
 import {useSelector} from "react-redux";
 import {RootState} from "lib/store";
@@ -97,29 +95,7 @@ export default function Signup() {
 
                     <Box sx={{mt: 1}}>
                         {" "}
-                        <Box
-                            component="div"
-                            sx={{
-                                display: "flex",
-                                justifyContent: "center",
-                                paddingBottom: "15px",
-                            }}
-                        >
-                            <GoogleLogin
-                                onSuccess={(credentialResponse) => {
-                                    console.log(credentialResponse);
-                                    let accessToken = credentialResponse.credential;
 
-                                    // Decode the JWT token
-                                    const decodedToken = jwt.decode(accessToken || "");
-
-                                    console.log(decodedToken);
-                                }}
-                                onError={() => {
-                                    console.log("Login Failed");
-                                }}
-                            />
-                        </Box>
                         <div
                             style={{
                                 display: "flex",

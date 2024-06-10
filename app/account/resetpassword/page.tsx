@@ -20,7 +20,7 @@ import {toggleOpenLogin} from "../../../lib/reducers/appSlicer";
 export default function ResetPassword() {
     const searchParams: ReadonlyURLSearchParams = useSearchParams()
     const token: string | null = searchParams.get("token")
-const router=useRouter()
+    const router = useRouter()
     const handleResetPassword = async (data: {
         token: string | null;
         password: string;
@@ -32,21 +32,21 @@ const router=useRouter()
                 showInformation("password and token are required");
             // Make a request to your authentication endpoint
             const response = await axiosApi.post(`/users/resetpassword`, {
-                token, newPassword:password,
+                token, newPassword: password,
 
             });
 
             if (response.status === 200) {
 
                 showInformation(response.data);
-               setTimeout(()=>{ router.replace("/")
+                setTimeout(() => {
+                    router.replace("/")
 
-               dispatch(toggleOpenLogin())
-               },750)
+                    dispatch(toggleOpenLogin())
+                }, 750)
 
             }
         } catch (error: any) {
-
 
 
             //throw new Error("user doesnt exisit");

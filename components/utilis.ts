@@ -149,7 +149,7 @@ export const myDefaultProfile = {
     `,
 
     lastUpdate: "",
-   mobile: ["+33767109891"],
+    mobile: ["+33767109891"],
     emails: ["ayb.benayache@gmail.com", "ayoub.inf30@gmail.com"],
     addresses: ["46 cours du 14 juillet, 47000 Agen, France"],
     status: {

@@ -24,7 +24,7 @@ const selectedStorySlice = createSlice({
     },
 });
 
-export const { updateselectedStory, getselectedStory} =
+export const {updateselectedStory, getselectedStory} =
     selectedStorySlice.actions;
 
 export default selectedStorySlice.reducer;

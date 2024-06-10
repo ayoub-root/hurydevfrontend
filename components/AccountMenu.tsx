@@ -4,14 +4,10 @@ import Box from "@mui/material/Box";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import ListItemIcon from "@mui/material/ListItemIcon";
-import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
 import Tooltip from "@mui/material/Tooltip";
-import Notifications from "@mui/icons-material/Notifications";
-import Messages from "@mui/icons-material/Mail";
 import Logout from "@mui/icons-material/Logout";
-import {Avatar, Badge} from "@mui/material";
-import ToggleColorMode from "./ToggleColorMode";
+import {Avatar} from "@mui/material";
 
 import {useDispatch} from "react-redux";
 import {axiosApi, showInformation} from "./utilis";
@@ -69,14 +65,15 @@ export default function AccountMenu(props: any) {
                         aria-haspopup="true"
                         aria-expanded={open ? "true" : undefined}
                     >
-                        {props?.account?.firstname && <Avatar title={props?.account?.firstname + " " + props?.account?.lastname}
-                                                   sx={{width: 32, height: 32, textTransform: "uppercase"}}
-                                                   src={props?.account?.avatar ? process.env.NEXT_PUBLIC_ONLINE_WS_URI +
-                                                       "/images/profiles/" +
-                                                       props?.account?.avatar : process.env.NEXT_PUBLIC_ONLINE_WS_URI +
-                                                       "/images/profiles/" + "photo.png"
-                                                   }
-                        >{props?.account?.firstname[0] + "" + props?.account?.lastname[0]}</Avatar>}
+                        {props?.account?.firstname &&
+                            <Avatar title={props?.account?.firstname + " " + props?.account?.lastname}
+                                    sx={{width: 32, height: 32, textTransform: "uppercase"}}
+                                    src={props?.account?.avatar ? process.env.NEXT_PUBLIC_ONLINE_WS_URI +
+                                        "/images/profiles/" +
+                                        props?.account?.avatar : process.env.NEXT_PUBLIC_ONLINE_WS_URI +
+                                        "/images/profiles/" + "photo.png"
+                                    }
+                            >{props?.account?.firstname[0] + "" + props?.account?.lastname[0]}</Avatar>}
                     </IconButton>
                 </Tooltip>
             </Box>
@@ -115,20 +112,21 @@ export default function AccountMenu(props: any) {
                 transformOrigin={{horizontal: "right", vertical: "top"}}
                 anchorOrigin={{horizontal: "right", vertical: "bottom"}}
             >
-                <MenuItem onClick={()=>{
+                <MenuItem onClick={() => {
                     router.push("/myspace?tab=2");
                     handleClose()
                 }}>
-                    {props?.account?.firstname && <Avatar title={props?.account?.firstname + " " + props?.account?.lastname}
-                                               sx={{width: 32, height: 32, textTransform: "uppercase"}}
-                                               src={
-                                                   props?.account?.avatar ? process.env.NEXT_PUBLIC_ONLINE_WS_URI +
-                                                       "/images/profiles/" +
+                    {props?.account?.firstname &&
+                        <Avatar title={props?.account?.firstname + " " + props?.account?.lastname}
+                                sx={{width: 32, height: 32, textTransform: "uppercase"}}
+                                src={
+                                    props?.account?.avatar ? process.env.NEXT_PUBLIC_ONLINE_WS_URI +
+                                        "/images/profiles/" +
 
-                                                       props?.account?.avatar : process.env.NEXT_PUBLIC_ONLINE_WS_URI +
-                                                       "/images/profiles/" + "photo.png"
-                                               }
-                    >{props?.account?.firstname[0] + "" + props?.account?.lastname[0]}</Avatar>}
+                                        props?.account?.avatar : process.env.NEXT_PUBLIC_ONLINE_WS_URI +
+                                        "/images/profiles/" + "photo.png"
+                                }
+                        >{props?.account?.firstname[0] + "" + props?.account?.lastname[0]}</Avatar>}
                     {props?.account?.firstname}{" "}
                 </MenuItem>
 
