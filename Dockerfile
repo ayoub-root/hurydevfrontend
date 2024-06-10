@@ -4,10 +4,7 @@ FROM node:18-alpine3.17 AS base
 FROM base AS deps
 
 WORKDIR /app
-ENV NEXT_PUBLIC_APP_NAME="HuryDev"
-ENV NEXT_PUBLIC_URL="hurydev.com"
-ENV NEXT_PUBLIC_ONLINE_SRV_URI="http://backend-service/api/v1"
-ENV NEXT_PUBLIC_ONLINE_WS_URI="http://backend-service:8080"
+
 ENV ENV_NODE=production
 # Install dependencies based on the preferred package manager
 COPY package.json yarn.lock* package-lock.json* pnpm-lock.yaml* ./
@@ -30,7 +27,10 @@ RUN  npm run build
 # Production image, copy all the files and run next
 FROM base AS runner
 WORKDIR /app
-
+ENV NEXT_PUBLIC_APP_NAME="HuryDev"
+ENV NEXT_PUBLIC_URL="hurydev.com"
+ENV NEXT_PUBLIC_ONLINE_SRV_URI="http://backend-service/api/v1"
+ENV NEXT_PUBLIC_ONLINE_WS_URI="http://backend-service:8080"
 ENV NODE_ENV production
 # Uncomment the following line in case you want to disable telemetry during runtime.
 # ENV NEXT_TELEMETRY_DISABLED 1
