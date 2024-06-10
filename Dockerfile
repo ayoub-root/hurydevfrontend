@@ -27,6 +27,8 @@ FROM nginx:alpine
 # Copy the built app from the previous stage
 COPY --from=builder /app/.next /usr/share/nginx/html
 
+# Copy custom Nginx configuration
+COPY nginx.conf /etc/nginx/conf.d/default.conf
 # Expose the port on which the app will run
 EXPOSE 80
 
