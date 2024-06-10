@@ -4,6 +4,11 @@ FROM node:18-alpine3.17 AS builder
 # Set the working directory
 WORKDIR /app
 
+ENV NEXT_PUBLIC_APP_NAME="HuryDev"
+ENV NEXT_PUBLIC_URL="hurydev.com"
+ENV NEXT_PUBLIC_ONLINE_SRV_URI="http://backend-service/api/v1"
+ENV NEXT_PUBLIC_ONLINE_WS_URI="http://backend-service:8080"
+
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
