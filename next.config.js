@@ -2,7 +2,7 @@ const nextConfig = {
      //ignoreBuildErrors:true,
     //ignoreDuringBuilds: true,
     reactStrictMode: false,
-    output: 'standalone',
+    //output: 'standalone',
 };
 
 module.exports = nextConfig;
