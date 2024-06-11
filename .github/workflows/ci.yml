@@ -12,5 +12,14 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Build and run Docker containers
-        run: docker-compose up --build -d
+      - name: Copy nginx.conf to service
+        run: cp nginx.conf /etc/nginx/conf.d/default.conf
+
+      - name: Copy certificate to SSL folder
+        run: cp -r cert/. /etc/nginx/ssl
+
+      - name: Build Next.js app
+        run: npm install && npm run build # Adjust commands according to your project setup
+
+      - name: Run Next.js app
+        run: npm start # Adjust command according to your project setup
