@@ -21,7 +21,10 @@ COPY . .
 # Learn more here: https://nextjs.org/telemetry
 # Uncomment the following line in case you want to disable telemetry during the build.
 # ENV NEXT_TELEMETRY_DISABLED 1
-
+ENV NEXT_PUBLIC_APP_NAME="HuryDev"
+ENV NEXT_PUBLIC_URL="hurydev.com"
+ENV NEXT_PUBLIC_ONLINE_SRV_URI="http://backend-service/api/v1"
+ENV NEXT_PUBLIC_ONLINE_WS_URI="http://backend-service:8080"
 RUN  npm run build
 
 # Production image, copy all the files and run next
