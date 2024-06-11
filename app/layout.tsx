@@ -48,7 +48,8 @@ export default function RootLayout(props: { children: React.ReactNode }) {
                     <AppRouterCacheProvider options={{enableCssLayer: true}}>
                         <CssBaseline/>
                         {props.children}
-                        <NotificationListener/>
+                        {//<NotificationListener/>
+                        }
                         <Chatbot/>
                     </AppRouterCacheProvider>
                 </SnackbarProvider>
