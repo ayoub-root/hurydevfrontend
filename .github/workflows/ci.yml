@@ -23,3 +23,6 @@ jobs:
 
       - name: Run Next.js app
         run: npm start & # Adjust command according to your project setup
+
+      - name: Restart service
+        run: systemctl restart frontendapp.service
