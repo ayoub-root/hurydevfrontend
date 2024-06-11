@@ -11,7 +11,6 @@ import MyTheme from "components/MyTheme";
 import {closeSnackbar, SnackbarProvider} from "notistack";
 import {IconButton} from "@mui/material";
 import {Close} from "@mui/icons-material";
-import ReactGA from "react-ga4";
 import NotificationListener from "../components/NotificationListener";
 import Chatbot from "../components/ChatBot";
 
@@ -28,16 +27,14 @@ const Action = (snackbarId: any) => (
     </>
 );
 
-ReactGA.initialize("G-T2Z2JSJG6G");
+
 export default function RootLayout(props: { children: React.ReactNode }) {
     const myRef = React.useRef(null);
-    React.useEffect(() => {
-        ReactGA.send({hitType: "pageview", page: window.location.pathname});
-    }, []);
+
     return (
         <html lang="en">
         <head>
-            <title> abtech</title>
+            <title> Hury developement</title>
             <meta name="description" content=" "/>
             <meta name="robots" content="index, follow"/>
 
