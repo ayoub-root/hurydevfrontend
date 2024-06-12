@@ -124,6 +124,8 @@ export default function MyTheme(props: { children: React.ReactNode }) {
                 <meta charSet="UTF-8"/>
                 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
                 <title>Your Website Title</title>
+
+                <meta name="environment" content="production"/>
                 <meta name="description"
                       content="Discover insightful software programming tutorials, tips, and solutions on my personal blog. Whether you're a beginner or an experienced developer, find practical advice, in-depth guides, and problem-solving techniques to enhance your coding skills and advance your projects. Join our community and stay updated with the latest trends and best practices in the world of software development."/>
 

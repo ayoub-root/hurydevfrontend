@@ -50,6 +50,7 @@ export default function ContactUs(props: any) {
             sx={{
                 width: "100%",
                 my: 4,
+                px:4,
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",

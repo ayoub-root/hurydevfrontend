@@ -1,5 +1,5 @@
 import * as React from "react";
-import {Container, Grid} from "@mui/material";
+import {Grid} from "@mui/material";
 import Box from "@mui/material/Box";
 import Divider from "@mui/material/Divider";
 import AppAppBar from "../components/AppAppBar";
@@ -29,12 +29,15 @@ export default function LandingPage() {
         <Divider /> */}
                 <FAQ/>
                 <Divider/>
-                <Container maxWidth="md" id="contact" sx={{py: {xs: 8, sm: 16}}}>
-                    <Grid container spacing={6}>
-                        {" "}
+                <Grid container sx={{justifyContent: "center"}}>
+                    <Grid item xs={12} sm={12} md={6} lg={6}
+
+                          xl={6}
+                    >
+
                         <ContactUs/>
                     </Grid>
-                </Container>
+                </Grid>
                 <Divider/>
                 <Footer/>
             </Box>
