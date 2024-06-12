@@ -50,8 +50,8 @@ export default function RootLayout(props: { children: React.ReactNode }) {
 
             <meta property="og:title" content="Your Website Title"/>
             <meta property="og:type" content="website"/>
-            <meta property="og:url" content="https://www.yourwebsite.com"/>
-            <meta property="og:image" content="/images/img/presentation3.png"/>
+            <meta property="og:url" content="https://devwithx.com"/>
+            <meta property="og:image" content="https://devwithx.com/images/img/presentation3.png"/>
             <meta property="og:description"
                   content="Discover insightful software programming tutorials, tips, and solutions on my personal blog. Whether you're a beginner or an experienced developer, find practical advice, in-depth guides, and problem-solving techniques to enhance your coding skills and advance your projects. Join our community and stay updated with the latest trends and best practices in the world of software development."/>
             <meta property="og:site_name" content="Develop with X"/>
@@ -62,7 +62,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
             <meta name="twitter:title" content="Develop with X"/>
             <meta name="twitter:description"
                   content="Discover insightful software programming tutorials, tips, and solutions on my personal blog. Whether you're a beginner or an experienced developer, find practical advice, in-depth guides, and problem-solving techniques to enhance your coding skills and advance your projects. Join our community and stay updated with the latest trends and best practices in the world of software development."/>
-            <meta name="twitter:image" content="/images/img/presentation3.png"/>
+            <meta name="twitter:image" content="https://devwithx.com/images/img/presentation3.png"/>
             <meta name="twitter:site" content="@yourtwitterhandle"/>
             <meta name="twitter:creator" content="@yourtwitterhandle"/>
 
