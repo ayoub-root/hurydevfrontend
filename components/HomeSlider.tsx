@@ -48,7 +48,7 @@ const HomeSlider = () => {
                                 Features
                             </Typography>
                             {features.map((feature, index) => (
-                               <ListItem> <Typography key={index} variant="body1" gutterBottom>
+                               <ListItem key={index}> <Typography  variant="body1" gutterBottom>
                                    <li>{feature}</li>
                                </Typography></ListItem>
                             ))}
