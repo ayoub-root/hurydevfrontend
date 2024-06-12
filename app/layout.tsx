@@ -34,7 +34,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
     return (
         <html lang="en">
         <head>
-            <title> Hury developement</title>
+            <title> Develop With X</title>
             <meta name="description" content=" "/>
             <meta name="robots" content="index, follow"/>
 

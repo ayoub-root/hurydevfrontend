@@ -1,4 +1,4 @@
-name: Build and Run HuryDev App
+name: Build and Run DevWithX App
 
 on:
   push:
@@ -24,5 +24,3 @@ jobs:
       - name: Run Next.js app
         run: npm start & # Adjust command according to your project setup
 
-      - name: Restart service
-        run: systemctl restart frontendapp.service
