@@ -112,7 +112,7 @@ export default function Portfolio() {
                 />
                 <meta
                     property="og:url"
-                    content={"https://abtech-six.vercel.app/portfolio/"}
+                    content={"https://devwithx.com/portfolio/"}
                 />
                 {/* Add other meta tags as needed */}
             </Head>

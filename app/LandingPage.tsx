@@ -10,13 +10,14 @@ import ContactUs from "components/ContactUs";
 
 import MyServices from "components/MyServices";
 import ServiceFeatures from "../components/ServiceFeatures";
+import Hero from "../components/Hero";
 
 export default function LandingPage() {
     return (
         <div>
             <AppAppBar/>
 
-            {/* <Hero /> */}
+             <Hero />
             <Box id="home" sx={{bgcolor: "background.default"}}>
                 {/* <LogoCollection /> */}
                 <MyServices/>

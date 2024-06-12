@@ -11,12 +11,12 @@ import MenuItem from "@mui/material/MenuItem";
 import Drawer from "@mui/material/Drawer";
 import MenuIcon from "@mui/icons-material/Menu";
 import ToggleColorMode from "./ToggleColorMode";
-import {Home} from "@mui/icons-material";
 import Link from "@mui/material/Link";
 import {useDispatch, useSelector} from "react-redux";
 import {RootState} from "lib/store";
 import AccountMenu from "./AccountMenu";
 import {toggleOpenLogin, toggleOpenRegister} from "../lib/reducers/appSlicer";
+import Image from "next/image";
 
 const logoStyle = {
     width: "140px",
@@ -93,10 +93,12 @@ function AppAppBar() {
                                 ml: "-18px",
                             }}
                         >
-                            {" "}
-                            <Avatar sx={{mx: 1}}>
-                                <Home/>
-                            </Avatar>
+
+                            <Avatar sx={{backgroundColor:"transparent"}}><Image width={35}
+                                           height={35}
+                                           alt=""
+                                           src="/images/icons/favicon.png"/></Avatar>
+
                             <Box
                                 sx={{
                                     display: {xs: "none", md: "flex"},
