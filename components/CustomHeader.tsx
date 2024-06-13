@@ -54,8 +54,8 @@ const CustomHeader = (props: any): any => {
         <meta name="twitter:image" content={image}/>
         <meta name="twitter:image:src" content={image}/>
         <meta property="twitter:image:alt" content={title}/>
-        <meta name="twitter:site" content="@yourtwitterhandle"/>
-        <meta name="twitter:creator" content="@yourtwitterhandle"/>
+        <meta name="twitter:site" content="@benayache_ayoub"/>
+        <meta name="twitter:creator" content="@benayache_ayoub"/>
         <meta property="twitter:image:width" content="1200"/>
         <meta property="twitter:image:height" content="630"/>
         <meta name="twitter:widgets:new-embed-design" content="on"/>
