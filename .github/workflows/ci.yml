@@ -12,30 +12,10 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v2
-        with:
-          node-version: '18' # Specify Node.js version 18
-
-      - name: Cache node modules
-        id: cache-node-modules
-        uses: actions/cache@v2
-        with:
-          path: ~/.npm
-          key: node-modules-${{ hashFiles('package-lock.json') }}
-          restore-keys: node-modules
 
       - name: Install dependencies
         run: npm install
-        if: steps.cache-node-modules.outputs.cache-hit != 'true'
 
-      - name: Verify next installation
-        run: |
-          npm list next
-          if [ $? -ne 0 ]; then
-            echo "Next.js is not installed."
-            exit 1
-          fi
 
       - name: Copy nginx.conf to service
         run: cp nginx.conf /etc/nginx/conf.d/default.conf
@@ -46,5 +26,8 @@ jobs:
       - name: Build Next.js app
         run: npm run build
 
+      - name: Stop Next.js app
+        run: pm2 stop  nextjs-app & # Adjust command according to your project setup
+
       - name: Run Next.js app
-        run: npm start & # Adjust command according to your project setup
+        run: pm2 start npm --name "nextjs-app" -- run start # Adjust command according to your project setup
