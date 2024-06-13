@@ -25,6 +25,9 @@ jobs:
         run: npm install
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
 
+      - name: Verify next installation
+        run: npm list next
+
       - name: Copy nginx.conf to service
         run: cp nginx.conf /etc/nginx/conf.d/default.conf
 
