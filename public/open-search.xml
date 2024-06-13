@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription >
+    <ShortName>DEV with X search</ShortName>
+    <Description>Find posts from Dev with X.</Description>
+    <Contact>devwithx@gmail.com</Contact>
+    <Url type="text/html" template="https://devwithx.com/search?q={searchTerms}"/>
+</OpenSearchDescription>

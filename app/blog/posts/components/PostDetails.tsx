@@ -5,7 +5,7 @@ import PostActions from "./PostActions";
 import {axiosApi, defultTabList, showInformation, timeAgo} from "components/utilis";
 import * as React from "react";
 import {useEffect, useState} from "react";
-import CustomLayout from "components/CustomLayout";
+import CustomHeader from "../../../../components/CustomHeader";
 import LoadingPage from "../../../LoadingPage";
 import {
     Timeline,
@@ -123,6 +123,14 @@ const PostDetails = ({params: {slug}, isDialog}: { params: { slug: string }, isD
 
     return <Grid sx={{}}>
         <LoadingPage open={loading} onClose={() => setLoading(false)}/>
+        {<CustomHeader
+            slug={post?.slug}
+            title={post?.title}
+            description={post?.description}
+            image={post?.image}
+            url={process.env.NEXT_PUBLIC_ONLINE_SRV_URI + "/posts/" + post?.slug}
+            key={slug + "e"}
+        />
         <Box
             sx={{
                 paddingInline: "15px",
@@ -165,14 +173,7 @@ const PostDetails = ({params: {slug}, isDialog}: { params: { slug: string }, isD
                     // minWidth: "230px",
                 }}
             >
-                {<CustomLayout
-                    slug={post?.slug}
-                    title={post?.title}
-                    description={post?.description}
-                    image={post?.image}
-                    url={process.env.NEXT_PUBLIC_ONLINE_SRV_URI + "/posts/" + post?.slug}
-                    key={slug + "e"}
-                >
+
                     <Box
                         sx={{
                             borderRadius: "6px",
@@ -255,7 +256,7 @@ const PostDetails = ({params: {slug}, isDialog}: { params: { slug: string }, isD
                             ></div>
                         </Box>
                     </Box>
-                </CustomLayout>}
+
                 <Box
                     id="comments-section"
                     sx={{
