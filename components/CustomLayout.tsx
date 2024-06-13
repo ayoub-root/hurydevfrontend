@@ -13,6 +13,8 @@ const CustomLayout = (props: {
     <>
         <head>
             <title>{props.title}</title>
+            <meta property="og:type" content="website"/>
+            <meta property="og:site_name" content="Develop with X"/>
             <meta property="og:title" content={props?.title}/>
             <meta property="og:description" content={props?.description}/>
             <meta
@@ -23,7 +25,7 @@ const CustomLayout = (props: {
                     props?.image
                 }
             />
-            <meta property="og:url" content={props?.url}/>
+            <meta property="og:url" content={props?.url + "/"}/>
         </head>
 
         {props?.children}
