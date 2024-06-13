@@ -123,12 +123,17 @@ const PostDetails = ({params: {slug}, isDialog}: { params: { slug: string }, isD
 
     return <Grid sx={{}}>
         <LoadingPage open={loading} onClose={() => setLoading(false)}/>
-        {<CustomHeader
-            slug={post?.slug}
-            title={post?.title}
-            description={post?.description}
-            image={post?.image}
-            url={process.env.NEXT_PUBLIC_ONLINE_SRV_URI + "/posts/" + post?.slug}
+        <CustomHeader
+            data={
+                {
+                    title: post?.title,
+                    description: post.description,
+                    image:process.env.NEXT_PUBLIC_ONLINE_WS_URI + "/myfiles/posts/" +  post?.image,
+                    tags: post?.tags.map((d:any) => d?.title).join(', '),
+                    url: process.env.NEXT_PUBLIC_ONLINE_SRV_URI + "/posts/" + post?.slug,
+                    updatedAt: post.updatedAt
+
+                }}
             key={slug + "e"}
         />
         <Box
