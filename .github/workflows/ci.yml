@@ -12,21 +12,30 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
 
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version: '18' # Specify Node.js version 18
+
       - name: Cache node modules
         id: cache-node-modules
         uses: actions/cache@v2
         with:
           path: ~/.npm
-          key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-          restore-keys: |
-            ${{ runner.os }}-node-
+          key: node-modules-${{ hashFiles('package-lock.json') }}
+          restore-keys: node-modules
 
       - name: Install dependencies
         run: npm install
         if: steps.cache-node-modules.outputs.cache-hit != 'true'
 
       - name: Verify next installation
-        run: npm list next
+        run: |
+          npm list next
+          if [ $? -ne 0 ]; then
+            echo "Next.js is not installed."
+            exit 1
+          fi
 
       - name: Copy nginx.conf to service
         run: cp nginx.conf /etc/nginx/conf.d/default.conf
