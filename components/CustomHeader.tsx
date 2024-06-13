@@ -7,7 +7,7 @@ const CustomHeader = (props: any): any => {
 
     const homeHeader = {
         title: "Develop With X",
-
+type:"website",
         description: "Discover insightful software programming tutorials, tips, and solutions on my personal blog.",
         image: "https://devwithx.com/images/img/presentation3.png",
         url: "https://devwithx.com",
@@ -21,6 +21,7 @@ const CustomHeader = (props: any): any => {
         url,
         tags,
         updatedAt,
+        type
 
     } = props?.data || homeHeader;
     return <head>
@@ -35,7 +36,7 @@ const CustomHeader = (props: any): any => {
 
         {/* og metadata*/}
         <meta property="og:title" content={title}/>
-        <meta property="og:type" content="website"/>
+        <meta property="og:type" content={type||"article"}/>
         <meta property="og:url" content={url}/>
 
         <meta property="og:image" content={image}/>

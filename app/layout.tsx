@@ -2,6 +2,7 @@
 import "./style.scss";
 import 'react-toastify/dist/ReactToastify.css';
 import * as React from "react";
+import {useEffect, useState} from "react";
 import {AppRouterCacheProvider} from "@mui/material-nextjs/v14-appRouter";
 import CssBaseline from "@mui/material/CssBaseline";
 
@@ -12,7 +13,6 @@ import {closeSnackbar, SnackbarProvider} from "notistack";
 import {IconButton} from "@mui/material";
 import {Close} from "@mui/icons-material";
 import Chatbot from "../components/ChatBot";
-import Head from "next/head";
 import CustomHeader from "../components/CustomHeader";
 
 
@@ -31,10 +31,26 @@ const Action = (snackbarId: any) => (
 
 export default function RootLayout(props: { children: React.ReactNode }) {
     const myRef = React.useRef(null);
+    const [showHeader, setShowHeader] = useState(true);
+
+    useEffect(() => {
+        // Check pathname when component mounts and on route changes
+        const currentPathname = window.location.pathname;
+
+        // Example: Conditionally hide header if pathname includes '/blog'
+        if (currentPathname.includes('/blog/posts')) {
+            setShowHeader(false);
+        } else {
+            setShowHeader(true);
+        }   // Cleanup function
+        return () => {
+            // Optionally perform cleanup
+        };
+    }, []); // Empty dependency array ensures effect runs only once on mount
 
     return (
         <html lang="en">
-      <CustomHeader data={null}/>
+        {showHeader && <CustomHeader/>}
 
 
         <body style={{fontFamily: "verdana !important"}}>

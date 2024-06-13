@@ -127,11 +127,11 @@ const PostDetails = ({params: {slug}, isDialog}: { params: { slug: string }, isD
             data={
                 {
                     title: post?.title,
-                    description: post.description,
+                    description: post?.description,
                     image:process.env.NEXT_PUBLIC_ONLINE_WS_URI + "/myfiles/posts/" +  post?.image,
-                    tags: post?.tags.map((d:any) => d?.title).join(', '),
+                    tags: post?.tags,
                     url: process.env.NEXT_PUBLIC_ONLINE_SRV_URI + "/posts/" + post?.slug,
-                    updatedAt: post.updatedAt
+                    updatedAt: post?.updatedAt
 
                 }}
             key={slug + "e"}
