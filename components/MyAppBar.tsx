@@ -1,25 +1,18 @@
 import * as React from "react";
-import {IconButton} from "@mui/material";
+import {IconButton, Typography} from "@mui/material";
 import Box from "@mui/material/Box";
 import AppBar from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
 import Button from "@mui/material/Button";
-import Drawer from "@mui/material/Drawer";
-import MenuIcon from "@mui/icons-material/Menu";
 import ToggleColorMode from "./ToggleColorMode";
 import AccountMenu from "./AccountMenu";
-import {ArrowBack} from "@mui/icons-material";
+import {ArrowBack, Login} from "@mui/icons-material";
 import Link from "@mui/material/Link";
 import {RootState} from "lib/store";
 import {useDispatch, useSelector} from "react-redux";
 import {toggleOpenLogin, toggleOpenRegister} from "../lib/reducers/appSlicer";
 import BlogSearch from "../app/blog/posts/components/BlogSearch";
 
-const logoStyle = {
-    width: "140px",
-    height: "auto",
-    cursor: "pointer",
-};
 
 function MyAppBar() {
     const dispatch = useDispatch();
@@ -51,14 +44,19 @@ function MyAppBar() {
         <AppBar
             position="sticky"
             color="transparent"
-            sx={{width: "100%", top: "0px"}}
+            sx={{
+                width: "100%", top: "0px",// border: "solid"
+            }}
         >
-            <Toolbar sx={{justifyContent: "space-between"}}>
+            <Toolbar sx={{padding: 0}}>
                 <Box
                     sx={{
                         display: "flex",
-                        gap: 0.5,
+                        px: 0,
                         alignItems: "center",
+                        justifyContent: "space-between",
+                        width: '100%',
+                        maxWidth: "100%"
                     }}
                 >
                     <IconButton>
@@ -67,65 +65,49 @@ function MyAppBar() {
                         </Link>
                     </IconButton>
                     <BlogSearch/>
-                </Box>
-                <Box
-                    sx={{
-                        display: "flex",
-                        gap: 0.5,
-                        alignItems: "center",
-                    }}
-                >
-                    {loggedAccount ? (
-                        <AccountMenu account={loggedAccount}/>
-                    ) : (
-                        <div>
-                            {" "}
-                            <Button
-                                color="primary"
-                                variant="text"
-                                size="small"
-                                onClick={() => dispatch(toggleOpenLogin())}
-
-                            >
-                                Sign in
-                            </Button>
-                            <Button
-                                color="primary"
-                                variant="text"
-                                size="small"
-                                onClick={() => dispatch(toggleOpenRegister())}
-
-                            >
-                                Sign up
-                            </Button>
-                        </div>
-                    )}
-
-                    <ToggleColorMode/>
-                </Box>
-                <Box sx={{display: {sm: "none", md: "none", lg: "none", xs: "none"}}}>
-                    <Button
-                        variant="text"
-                        color="primary"
-                        aria-label="menu"
-                        onClick={toggleDrawer(true)}
-                        sx={{minWidth: "30px", p: "4px"}}
+                    <Box
+                        sx={{
+                            display: "flex",
+                            gap: 0.5,
+                            alignItems: "center",
+                        }}
                     >
-                        <MenuIcon/>
-                    </Button>
-                    <Drawer anchor="right" open={open} onClose={toggleDrawer(false)}>
-                        <Box
-                            sx={{
-                                minWidth: "60dvw",
-                                p: 2,
-                                backgroundColor: "background.paper",
-                                flexGrow: 1,
-                            }}
-                        >
+                        {loggedAccount ? (
+                            <AccountMenu account={loggedAccount}/>
+                        ) : (
+                            <div>
 
-                        </Box>
-                    </Drawer>
+                                <Button
+                                    color="primary"
+                                    variant="text"
+                                    size="small"
+                                    onClick={() => dispatch(toggleOpenLogin())}
+
+                                >
+                                    <Login sx={{display: {xs: "flex", sm: "none", md: "none",lg:'none',width:"35px"}}}/>
+                                    <Typography
+                                        sx={{display: {xs: "none", sm: "flex", md: "flex",lg:"flex"}}}
+                                    >
+                                        Sign in
+                                    </Typography>
+                                </Button>
+                                <Button
+                                    color="primary"
+                                    variant="text"
+                                    size="small"
+                                    onClick={() => dispatch(toggleOpenRegister())}
+                                    sx={{display: {xs: "none", sm: "", md: ""}}}
+                                >
+                                    Sign up
+                                </Button>
+                            </div>
+                        )}
+
+                        <ToggleColorMode/>
+                    </Box>
                 </Box>
+
+
             </Toolbar>
         </AppBar>
     );

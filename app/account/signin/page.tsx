@@ -18,6 +18,8 @@ import {RootState} from "lib/store";
 import {useRouter} from "next/navigation";
 import {toggleOpenForgotPassword, toggleOpenLogin, toggleOpenRegister} from "../../../lib/reducers/appSlicer";
 import {Visibility, VisibilityOff} from "@mui/icons-material";
+import Container from "@mui/material/Container";
+import CssBaseline from "@mui/material/CssBaseline";
 
 //import { userLogin } from "controllers/auth/UserLogin";
 
@@ -79,15 +81,16 @@ export default function Signin() {
         <Grid container component="main" sx={{height: "100vh"}}>
 
             <Grid item xs={12} sm={12} md={12} component={Paper} elevation={6} square>
-                <Box
-                    sx={{
-                        my: 12,
-                        mx: 15,
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                    }}
-                >
+                <Container component="main" maxWidth="xs">
+                    <CssBaseline/>
+                    <Box
+                        sx={{
+                            marginTop: 8,
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                        }}
+                    >
                     <Avatar sx={{m: 1, bgcolor: "secondary.main"}}>
                         <LockOutlinedIcon/>
                     </Avatar>
@@ -206,8 +209,9 @@ export default function Signin() {
                                 </Button>
                             </Grid>
                         </Grid>
-                    </Box>
-                </Box>
+                    </Box> </Box>
+
+                </Container>
             </Grid>
         </Grid>
     );

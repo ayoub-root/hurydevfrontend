@@ -60,6 +60,7 @@ const ChatbotMessages: React.FC<ChatbotMessagesProps> = ({
     return (
         <div
             style={{
+                minWidth: "100%",
                 maxWidth: "100%",
                 display: "grid",
                 height: "100%",
@@ -196,10 +197,10 @@ function Chatbot() {
                     <Fade {...TransitionProps} timeout={350}>
                         <Box
                             sx={{
-                                border: "solid 1px #ccc",
+
                                 backgroundColor: "background.paper",
-                                paddingInline: "4px",
-                                width: "320px",
+                                paddingInline: "6px",
+                                width: {xs:"100%",sm:"100%" ,md:"330px"},
                                 height: "460px",
                                 borderRadius: "6px",
                                 paddingBlock: "4px 6px",

@@ -52,23 +52,7 @@ export default function Signup() {
 
     return (
         <Grid container component="main" sx={{height: "100vh"}}>
-            <Grid
-                item
-                xs={false}
-                sm={4}
-                md={7}
-                sx={{
-                    backgroundImage: "url(https://source.unsplash.com/random?wallpapers)",
-                    backgroundRepeat: "no-repeat",
-                    backgroundColor: (t) =>
-                        t.palette.mode === "light"
-                            ? t.palette.grey[50]
-                            : t.palette.grey[900],
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                    display: "none"
-                }}
-            />
+
             <Grid item xs={12} sm={12} md={12} component={Paper} elevation={6} square>
                 <Container component="main" maxWidth="xs">
                     <CssBaseline/>

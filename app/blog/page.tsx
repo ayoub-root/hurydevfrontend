@@ -324,6 +324,7 @@ export default function Blog() {
                         width: {xs: "100%", sm: "100%", md: "100%", lg: "95%"},
                         padding: 0,
                         height: '100%'
+
                     }}>
                         <PostDetails params={{slug: openSlug}} isDialog={true}/>
                     </Container>

@@ -141,7 +141,8 @@ function LikeButton(props: any) {
                                                 props?.isUpdated()
                                             })
 
-                                        }}>
+                                        }}
+                            >
                                 {reaction.icon}
                             </IconButton>
                         ))}
@@ -151,6 +152,7 @@ function LikeButton(props: any) {
                 open={isHovered}
                 onOpen={() => handleHover(true)}
                 onClose={() => handleHover(false)}
+                onMouseDown={() => handleHover(true)}
             >
                 <IconButton aria-label="Like">
                     <ThumbUpOffAlt/> <Avatar color={"primary"} style={{
@@ -253,7 +255,7 @@ function PostActions(props: any) {
                     </IconButton>
                 </Tooltip>
                 <Tooltip title="Share options" placement="right">
-                    <ShareButton sharedUrl={article?.slug}/>
+                    <ShareButton urlToShare={article?.slug}/>
                 </Tooltip>
                 <Tooltip title="More options" placement="right">
                     <IconButton>

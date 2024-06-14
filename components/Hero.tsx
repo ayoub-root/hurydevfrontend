@@ -26,8 +26,8 @@ export default function Hero() {
                     display: "flex",
                     flexDirection: "column",
                     alignItems: "center",
-                    // pt: { xs: 14, sm: 20 },
-                    //   pb: { xs: 8, sm: 12 },
+                     pt: { xs: 3, sm: 0 , md:0},
+                       pb: { xs: 1, sm: 2 , md: 0},
                 }}
             >
 

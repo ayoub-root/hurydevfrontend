@@ -12,6 +12,8 @@ import Typography from "@mui/material/Typography";
 import {toggleOpenForgotPassword, toggleOpenLogin, toggleOpenRegister} from "../../../lib/reducers/appSlicer";
 import {useDispatch} from "react-redux";
 import {axiosApi, showInformation} from "../../../components/utilis";
+import CssBaseline from "@mui/material/CssBaseline";
+import Container from "@mui/material/Container";
 
 export default function ForgotPassword() {
     const [email, setEmail] = React.useState("");
@@ -56,15 +58,16 @@ export default function ForgotPassword() {
         <Grid container component="main" sx={{height: "100vh"}}>
 
             <Grid item xs={12} sm={12} md={12} component={Paper} elevation={6} square>
-                <Box
-                    sx={{
-                        my: 12,
-                        mx: 15,
-                        display: "flex",
-                        flexDirection: "column",
-                        alignItems: "center",
-                    }}
-                >
+                <Container component="main" maxWidth="xs">
+                    <CssBaseline/>
+                    <Box
+                        sx={{
+                            marginTop: 8,
+                            display: "flex",
+                            flexDirection: "column",
+                            alignItems: "center",
+                        }}
+                    >
                     <Avatar sx={{m: 1, bgcolor: "secondary.main"}}>
                         <LockOutlinedIcon/>
                     </Avatar>
@@ -119,7 +122,7 @@ export default function ForgotPassword() {
 
                         </Grid>
                     </Box>
-                </Box>
+                    </Box></Container>
             </Grid>
         </Grid>
     );

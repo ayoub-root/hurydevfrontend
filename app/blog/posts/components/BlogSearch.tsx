@@ -80,7 +80,8 @@ export default function BlogSearch() {
     return (
         <Autocomplete
             freeSolo
-            sx={{width: 300}}
+         fullWidth
+            sx={{paddingLeft:"5px"}}
             getOptionLabel={(option) =>
                 typeof option === 'string' ? option : option.title
             }
@@ -101,6 +102,7 @@ export default function BlogSearch() {
             renderInput={(params) => (
                 <TextField {...params} placeholder="Search blog posts" fullWidth InputProps={{
                     ...params.InputProps,
+                   style:{ minWidth:"180px",maxWidth:"350px"},
                     startAdornment: (
                         <React.Fragment>
                             <Search/>

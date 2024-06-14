@@ -27,7 +27,6 @@ import {getAllFilters} from "../app/blog/components/CustomFilter";
 import {getAFilters} from "../lib/reducers/filtersSlicer";
 import ForgotPassword from "../app/account/forgot-password/page";
 import ResetPassword from "../app/account/resetpassword/page";
-import Head from "next/head";
 
 function MyApp() {
     const {enqueueSnackbar} = useSnackbar();
@@ -121,7 +120,7 @@ export default function MyTheme(props: { children: React.ReactNode }) {
 
                     <Drawer open={openLogin || openRegister || openReset || openForgot}
                             anchor="right"
-                            sx={{zIndex: 13000}}
+                            sx={{zIndex: 13000,maxWidth:"100%"}}
                     >
                         <IconButton style={{position: "absolute", right: "10px", top: "10px"}} onClick={() => {
                             if (openLogin) dispatch(toggleOpenLogin())
@@ -131,7 +130,13 @@ export default function MyTheme(props: { children: React.ReactNode }) {
 
 
                         }}><Close/></IconButton>
-                        <Box width={"600px"} sx={{backgroundColor: "background.paper"}}>
+                        <Box sx={{
+                            backgroundColor: "background.paper",
+                            justifyContent: "center",
+                            display: "flex",
+                            border: "solid",
+                            maxWidth:'100%'
+                        }}>
                             {openLogin && <Signin/>}
                             {openRegister && <Signup/>}
                             {openForgot && <ForgotPassword/>}

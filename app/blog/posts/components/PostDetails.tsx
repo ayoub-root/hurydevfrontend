@@ -126,6 +126,7 @@ const PostDetails = ({params: {slug}, isDialog}: { params: { slug: string }, isD
         <CustomHeader
             data={
                 {
+                    type: "article",
                     title: post?.title,
                     description: post?.description,
                     image:process.env.NEXT_PUBLIC_ONLINE_WS_URI + "/myfiles/posts/" +  post?.image,
@@ -138,8 +139,8 @@ const PostDetails = ({params: {slug}, isDialog}: { params: { slug: string }, isD
         />
         <Box
             sx={{
-                paddingInline: "15px",
-                paddingBlock: "10px 0px",
+                paddingInline: {xs:0,sm:"5px",md:"10px"},
+                paddingBlock: "10px 5px",
                 display: post ? "flex" : "none",
                 height: isDialog ? "calc(100vh - 5px)" : "calc(100vh - 65px)",
                 flexGrow: 1,

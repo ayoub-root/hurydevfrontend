@@ -57,7 +57,7 @@ function AppAppBar() {
                 position="fixed"
                 sx={{
                     boxShadow: 0,
-                    bgcolor: "transparent",
+                    backgroundColor: "transparent",
                     backgroundImage: "none",
                     mt: 2,
                 }}
@@ -269,7 +269,7 @@ function AppAppBar() {
                                         FAQ
                                     </MenuItem>
                                     <Divider/>
-                                    <MenuItem>
+                                    {loggedAccount&&  <MenuItem>
                                         <Button
                                             color="secondary"
                                             variant="contained"
@@ -280,7 +280,7 @@ function AppAppBar() {
                                         >
                                             Dashboard
                                         </Button>
-                                    </MenuItem>
+                                    </MenuItem>}
                                     <MenuItem>
                                         <Button
                                             color="secondary"
@@ -304,9 +304,10 @@ function AppAppBar() {
                                         >
                                             Blog
                                         </Button>
-                                        <Divider/>
+
                                     </MenuItem>
-                                    <MenuItem>
+                                    <Divider/>
+                                    {loggedAccount?<AccountMenu account={loggedAccount}/>:<><MenuItem>
                                         <Button
                                             color="primary"
                                             variant="contained"
@@ -328,6 +329,7 @@ function AppAppBar() {
                                             Sign in
                                         </Button>
                                     </MenuItem>
+                                    </>}
                                 </Box>
                             </Drawer>
                         </Box>
