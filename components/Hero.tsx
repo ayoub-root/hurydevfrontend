@@ -16,7 +16,7 @@ export default function Hero() {
                     theme.palette.mode === "light"
                         ? "linear-gradient(180deg, #CEE5FD, #FFF)"
                         : "linear-gradient(#02294F, #090E10)",
-                backgroundSize: "100% 20%",
+                backgroundSize: "100% 100%",
                 backgroundRepeat: "no-repeat",
 
             })}
@@ -40,7 +40,7 @@ export default function Hero() {
                     sx={(theme) => ({
                         mt: {xs: 8, sm: 14},
                         alignSelf: "center",
-                        height: {xs: 200, sm: 600},
+                        height: {xs: 250, sm: 600},
                         width: "100%",
                         backgroundImage: theme.palette.mode === "light"
                             ?  'url("/images/img/presnetation2.png")':
