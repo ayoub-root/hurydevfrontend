@@ -29,8 +29,8 @@ export default function LandingPage() {
         <Divider /> */}
                 <FAQ/>
                 <Divider/>
-                <Grid container sx={{justifyContent: "center"}}>
-                    <Grid item xs={12} sm={12} md={6} lg={6}
+                <Grid   container sx={{justifyContent: "center"}}>
+                    <Grid id="contact"  pt={12} item xs={12} sm={12} md={6} lg={6}
 
                           xl={6}
                     >

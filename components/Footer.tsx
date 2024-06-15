@@ -30,7 +30,7 @@ export default function Footer() {
         >
             <Box
                 sx={{
-                    display: "flex",
+                    display: "none",
                     flexDirection: {xs: "column", sm: "row"},
                     width: "100%",
                     justifyContent: "space-between",
@@ -159,9 +159,9 @@ export default function Footer() {
                 sx={{
                     display: "flex",
                     justifyContent: "space-between",
-                    pt: {xs: 4, sm: 8},
+                    pt: {xs: 4, sm: 4},
                     width: "100%",
-                    borderTop: "1px solid",
+                   // borderTop: "1px solid",
                     borderColor: "divider",
                 }}
             >

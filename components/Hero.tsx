@@ -40,7 +40,7 @@ export default function Hero() {
                     sx={(theme) => ({
                         mt: {xs: 8, sm: 14},
                         alignSelf: "center",
-                        height: {xs: 250, sm: 600},
+                        height: {xs: 260, sm: 600},
                         width: "100%",
                         backgroundImage: theme.palette.mode === "light"
                             ?  'url("/images/img/presnetation2.png")':

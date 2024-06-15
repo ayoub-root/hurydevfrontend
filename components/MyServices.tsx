@@ -75,30 +75,30 @@ const servicesList = [
             "Deploying and managing applications on cloud platforms like AWS, Azure, or Google Cloud.",
         icon: <Cloud/>,
     },
-    {
-        title: "Blockchain Development",
-        description:
-            "Developing decentralized applications (DApps) or smart contracts using blockchain technology.",
-        icon: <Timeline/>,
-    },
+    // {
+    //     title: "Blockchain Development",
+    //     description:
+    //         "Developing decentralized applications (DApps) or smart contracts using blockchain technology.",
+    //     icon: <Timeline/>,
+    // },
     {
         title: "IoT Development",
         description:
             "Building connected devices and IoT solutions for various industries.",
         icon: <Router/>,
     },
-    {
-        title: "Data Analytics and Visualization",
-        description:
-            "Collecting, analyzing, and visualizing data to help businesses make informed decisions.",
-        icon: <InsertChart/>,
-    },
-    {
-        title: "Cybersecurity Services",
-        description:
-            "Providing cybersecurity services such as penetration testing, vulnerability assessments, and security audits.",
-        icon: <Security/>,
-    },
+    // {
+    //     title: "Data Analytics and Visualization",
+    //     description:
+    //         "Collecting, analyzing, and visualizing data to help businesses make informed decisions.",
+    //     icon: <InsertChart/>,
+    // },
+    // {
+    //     title: "Cybersecurity Services",
+    //     description:
+    //         "Providing cybersecurity services such as penetration testing, vulnerability assessments, and security audits.",
+    //     icon: <Security/>,
+    // },
     {
         title: "Content Management Systems (CMS)",
         description:

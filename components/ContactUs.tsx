@@ -49,7 +49,7 @@ export default function ContactUs(props: any) {
         <Box
             sx={{
                 width: "100%",
-                my: 4,
+                my: 3,
                 px:4,
                 display: "flex",
                 flexDirection: "column",
@@ -58,22 +58,7 @@ export default function ContactUs(props: any) {
                 rowGap: "15px",
             }}
         >
-            <SocialMedia/>
-            <div
-                id="contact"
-                style={{
-                    display: "flex",
-                    justifyContent: "center",
-                    alignItems: "center",
-                    columnGap: "20px",
-                }}
-            >
-                <Divider sx={{width: "40%"}}/>{" "}
-                <span style={{fontSize: "12px", color: "#bbb", marginTop: "-3px"}}>
-          or
-        </span>
-                <Divider sx={{width: "40%"}}/>
-            </div>
+
             <TextField
                 size="medium"
                 label="Your name"
@@ -124,6 +109,24 @@ export default function ContactUs(props: any) {
                     send
                 </Button>
             </Box>
+
+            <div
+
+                style={{
+                    display: "flex",
+                    justifyContent: "center",
+                    alignItems: "center",
+                    columnGap: "20px",
+                }}
+            >
+                <Divider sx={{width: "40%"}}/>{" "}
+                <span style={{fontSize: "12px", color: "#bbb", marginTop: "-3px"}}>
+          or
+        </span>
+                <Divider sx={{width: "40%"}}/>
+
+            </div>
+            <SocialMedia/>
         </Box>
     );
 }

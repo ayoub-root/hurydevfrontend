@@ -5,10 +5,22 @@ import {animated, useSpring} from 'react-spring';
 import ListItem from "@mui/material/ListItem";
 
 const features = [
-    'Learn JavaScript',
-    'Understand React',
-    'Master Next.js',
-    'Explore Node.js',
+    {
+        title:
+            "What", text:
+
+            "What is the project about? What problem does it aim to solve? Here, I’ll outline the goals and objectives of each service."
+    },
+    {
+        title: "Why",
+        text: "Why was this project created? Why were specific technologies and methods chosen? Understanding the reasoning behind the choices made is crucial for appreciating the project's value and uniqueness."
+    },
+
+    {
+        title: "How",
+        text: "How was the project developed? This is where the magic happens. I’ll walk you through the step-by-step process, highlighting the technologies used and the challenges overcome."
+    },
+
 ];
 
 const HomeSlider = () => {
@@ -27,28 +39,43 @@ const HomeSlider = () => {
     });
 
     return (
-        <Box sx={{flexGrow: 1, padding: 3}}>
+        <Box sx={{flexGrow: 1, padding: 4}}>
             <Grid container spacing={0} alignItems="center">
                 <Grid item xs={12} md={12}>
                     <animated.div style={props}>
-                        <Typography variant={"h1"} sx={{marginTop:'-12px',fontSize: {xs: "20px", sm: "26px", md: "32px"}}} gutterBottom>
-                            Why you are reading this?
+                        <Typography variant={"h1"}
+                                    sx={{marginTop: '-10px', fontSize: {xs: "20px", sm: "26px", md: "32px"}}}
+                                    gutterBottom>
+                            Welcome to DevWithX!
                         </Typography>
-                        <Typography sx={{width: "68%", fontSize: {xs: "13px", sm: "20px", md: "20px"}}}> Explore our
-                            comprehensive range of services designed to meet your diverse needs. From UI/UX design to web development, cybersecurity, and beyond, we offer expertise across
-                            the full spectrum of software solutions. Partner with us for reliable, top-quality services
-                            tailored to your requirements.</Typography>
+                        <Typography variant={"body2"}
+                                    sx={{width: "69%", fontSize: {xs: "13px", sm: "20px", md: "20px"}}}>
+                            Hi there! Welcome to DevWithX – your go-to resource for learning how to develop a wide range
+                            of services using diverse technologies. I'm passionate about sharing the stories behind each
+                            project, from the initial concept to the final product. Each post is a journey through the
+                            What, Why, and How of development.</Typography>
                         <br/>
 
                     </animated.div>
                     <Grid p={3} sx={{display:{xs:"none",sm:"flex"}}}>
                         <animated.div style={props2}>
-                            <Typography variant="h3" gutterBottom>
-                                Features
+                            <Typography variant="h5" gutterBottom>
+                                More ?
                             </Typography>
                             {features.map((feature, index) => (
-                               <ListItem key={index}> <Typography  variant="body1" gutterBottom>
-                                   <li>{feature}</li>
+                                <ListItem key={index} sx={{
+                                    display: "flex",
+                                    alignItems: "start",
+                                    width: "68%",
+                                    backgroundColor: '#22a1',
+                                    columnGap: "10px",
+                                    marginBlock: "5px",
+                                    paddingBlock: "8px",
+                                    borderRadius:"9px"
+                                }}>
+                                    <Typography fontStyle={"italic"} fontWeight={700}>{feature?.title}: </Typography> <Typography
+                                    sx={{color: 'text.primary'}} gutterBottom>
+                                    {feature.text}
                                </Typography></ListItem>
                             ))}
                         </animated.div>

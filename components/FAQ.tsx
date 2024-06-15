@@ -62,13 +62,13 @@ export default function FAQ() {
                             sx={{maxWidth: {sm: "100%", md: "70%"}}}
                         >
                             You can reach our customer support team by emailing
-                            <Link> support@email.com </Link>
+                            <Link> contact@devwithx.com </Link>
                             or calling our toll-free number. We&apos;re here to assist you
                             promptly.
                         </Typography>
                     </AccordionDetails>
                 </Accordion>
-                <Accordion
+                <Accordion sx={{display:'none'}}
                     expanded={expanded === "panel2"}
                     onChange={handleChange("panel2")}
                 >
