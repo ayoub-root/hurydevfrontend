@@ -16,7 +16,7 @@ import {
 import {axiosApi, formatDateTime} from "components/utilis";
 import MyDialog from "components/MyDialog";
 import LoadingPage from "app/LoadingPage";
-import AddMyCv from "../../portfolio/components/AddMyCv";
+import DynamicCVBuilder from "../../../components/DynamicCVBuilder";
 
 const rows = [
     {id: 1, lastName: "Snow", firstName: "Jon", age: 14},
@@ -315,13 +315,14 @@ export default function AdminMyCvsList() {
             <MyDialog
                 //  maxHeight="100vh"
                 maxWidth={"lg"}
-                title={"New Post"}
+                title={"New CV"}
                 open={newPost}
                 onClose={() => {
                     setNewPost(false);
+                    setEditMyCv(null);
                 }}
             >
-                <AddMyCv onClose={() => {
+                <DynamicCVBuilder onClose={() => {
 
                     setEditMyCv(null);
                     setNewPost(false)

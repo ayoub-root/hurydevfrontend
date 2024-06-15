@@ -3,11 +3,12 @@ import * as React from "react";
 import {useState} from "react";
 import {axiosApi, myDefaultProfile, showInformation} from "../../../components/utilis";
 import FileUploadButton from "../../../components/FileUploadButton";
+import DynamicCVBuilder from "../../../components/DynamicCVBuilder";
 
 export default function AddMyCv(props: any) {
-    const [mycv, setMycv] = useState(props?.editMyCv || {
+    const [mycv, setMycv] = useState(props?.editMyCv? {...props.editMyCv,content:JSON.parse(props?.editMyCv?.content)}: {
         title: null,
-        content: JSON.stringify(myDefaultProfile, null, 4) || "",
+        content:myDefaultProfile,// JSON.stringify(myDefaultProfile, null, 4) || "",
         language: "english",
         fileUrl: null,
         photoUrl: null,
@@ -90,19 +91,7 @@ export default function AddMyCv(props: any) {
     >
 
         <div style={{padding: "0px 10px"}}>
-        <textarea
-            onChange={(e) => setMycv({...mycv, content: e.target.value})}
-            style={{
-                height: "100%",
-                width: "99%",
-                border: "solid 1px #eee",
-                overflow: "auto",
-                whiteSpace: "pre-wrap",
-                fontFamily: "tahoma",
-
-            }}
-            value={mycv?.content}
-        />
+       dddddddddd
         </div>
         <div
             style={{

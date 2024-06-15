@@ -82,7 +82,7 @@ export default function Blog() {
             >
                 <Box
                     sx={(theme: Theme) => ({
-                        display: {xs: "none", sm: "none", md: "block"},
+                        display: {xs: "none", sm: "none", md:loggedAccount? "block":"none"},
                         alignItems: "center",
 
                         paddingTop: "5px",

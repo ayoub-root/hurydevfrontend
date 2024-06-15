@@ -145,10 +145,10 @@ export const myDefaultProfile = {
         "backend developer",
         "Frontend developer",
     ],
-    aboutme: `Hey there! Glad to have you on my personal website. I'm BENAYACHE Ayoub, a Computer Science PhD with a knack for web/software development, network/systems administration, and DEVOPS. I'm all about tackling challenges head-on and staying updated with the latest tech trends to cook up some truly inventive solutions. Let's dive in and explore the world of innovation together!
+    aboutMe: `Hey there! Glad to have you on my personal website. I'm BENAYACHE Ayoub, a Computer Science PhD with a knack for web/software development, network/systems administration, and DEVOPS. I'm all about tackling challenges head-on and staying updated with the latest tech trends to cook up some truly inventive solutions. Let's dive in and explore the world of innovation together!
     `,
 
-    lastUpdate: "",
+
     mobile: ["+33767109891"],
     emails: ["ayb.benayache@gmail.com", "ayoub.inf30@gmail.com"],
     addresses: ["46 cours du 14 juillet, 47000 Agen, France"],
@@ -156,6 +156,10 @@ export const myDefaultProfile = {
         title: "Available",
         isVisible: true,
     },
+    socialMedia: [{type: "linkedIn", link: ""}, {type: "twitter", link: ""}, {
+        type: "facebook",
+        link: ""
+    }, {type: "github", link: ""}, {type: "stackoverflow", link: ""},],
     educations: [
         {
             title: "Computer systems and networks.",
@@ -358,16 +362,31 @@ export const myDefaultProfile = {
             level: 4,
         },
     ],
-    publications: {
-        scholarLink: "https://scholar.google.com/citations?user=86Dwj4UAAAAJ",
-        articles: [
+
+
+    publications: [{
+        title:
             "MsM: A microservice middleware for smart WSN-based IoT application",
-            "MQTT-Based QoS Model for IoT-M2M Critical Applications",
-            "RPL rank based‐attack mitigation scheme in IoT environment",
-            "Divide and conquer-based attack against RPL routing protocol",
-            "Industrial IoT middleware using a multi-agent system for consistency-based diagnostic in cement factory",
-        ],
+        link: "https://scholar.google.com/citations?user=86Dwj4UAAAAJ"
     },
+        {
+            title: "MQTT-Based QoS Model for IoT-M2M Critical Applications",
+            link: "https://scholar.google.com/citations?user=86Dwj4UAAAAJ"
+        },
+        {
+            title: "RPL rank based‐attack mitigation scheme in IoT environment",
+            link: "https://scholar.google.com/citations?user=86Dwj4UAAAAJ"
+        },
+        {
+            title: "Divide and conquer-based attack against RPL routing protocol",
+            link: "https://scholar.google.com/citations?user=86Dwj4UAAAAJ"
+        },
+        {
+            title: "Industrial IoT middleware using a multi-agent system for consistency-based diagnostic in cement factory",
+            link: "https://scholar.google.com/citations?user=86Dwj4UAAAAJ"
+        },
+        ],
+
     moreDetails: [
         {
             title: "Problem-solving",

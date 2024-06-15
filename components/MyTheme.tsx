@@ -27,6 +27,7 @@ import {getAllFilters} from "../app/blog/components/CustomFilter";
 import {getAFilters} from "../lib/reducers/filtersSlicer";
 import ForgotPassword from "../app/account/forgot-password/page";
 import ResetPassword from "../app/account/resetpassword/page";
+import DynamicForm from "./DynamicCVBuilder";
 
 function MyApp() {
     const {enqueueSnackbar} = useSnackbar();
@@ -134,7 +135,7 @@ export default function MyTheme(props: { children: React.ReactNode }) {
                             backgroundColor: "background.paper",
                             justifyContent: "center",
                             display: "flex",
-                            border: "solid",
+                          //  border: "solid",
                             maxWidth:'100%'
                         }}>
                             {openLogin && <Signin/>}

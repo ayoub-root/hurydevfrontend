@@ -10,7 +10,7 @@ import Typography from "@mui/material/Typography";
 import {axiosApi, formatDateTime, getMonthAndYear,} from "components/utilis";
 import {Avatar, Button, Chip, Divider, Grid, IconButton, Link, MenuItem, Rating, Select,} from "@mui/material";
 import {SocialMedia} from "components/SocialMedia";
-import {ArrowBack, ArrowDropDown} from "@mui/icons-material";
+import {ArrowBack, ArrowDropDown, OpenInBrowser} from "@mui/icons-material";
 import ToggleColorMode from "components/ToggleColorMode";
 import Copyright from "components/Copyright";
 import MyDialog from "components/MyDialog";
@@ -487,7 +487,7 @@ export default function Portfolio() {
                                 // bgcolor: "background.default2",
                             }}
                         >
-                            {myProfile?.aboutme}
+                            {myProfile?.aboutMe}
                         </Typography>
                     </Box>
                     <Box // education
@@ -857,7 +857,7 @@ export default function Portfolio() {
                             container
                             sx={{padding: "15px"}}
                         >
-                            {myProfile?.publications?.articles?.map((sk: any) => (
+                            {myProfile?.publications?.map((sk: any) => (
                                 <Grid
                                     item
                                     key={sk}
@@ -865,7 +865,7 @@ export default function Portfolio() {
                                         margin: "5px",
                                         border: "solid 1px #eee3",
                                         borderRadius: "5px",
-                                        background: "#11e2",
+                                        background: "#eee9",
                                         minWidth: "200px",
                                         padding: "10px",
                                         display: "flex",
@@ -877,7 +877,7 @@ export default function Portfolio() {
                                 >
                                     <Typography
                                         sx={{
-                                            color: "text.primary",
+                                            color: "text.secondary",
                                             display: "flex",
                                             //  columnGap: "5px",
                                             alignItems: "center",
@@ -886,9 +886,10 @@ export default function Portfolio() {
                                             columnGap: "5px",
                                         }}
                                     >
-                                        <Typography>
-                                            {" "}
-                                            <li>{sk} </li>
+                                        <Typography sx={{display: 'flex', alignItems: "center"}}>
+                                            <li  >
+                                                <a href={sk?.link}>{sk?.title}</a></li>
+
                                         </Typography>
                                     </Typography>
                                 </Grid>
