@@ -26,6 +26,7 @@ type:"website",
     } = props?.data || homeHeader;
     return <head>
         {/* standard metadata*/}
+        <meta name="google-adsense-account" content="ca-pub-8560090638214984"/>
         <meta name="viewport" content="width=device-width, initial-scale=1"/>
         <link rel="icon"
               type="image/png" sizes="60x60" href="/images/icons/favicon.png"/>
@@ -36,7 +37,7 @@ type:"website",
 
         {/* og metadata*/}
         <meta property="og:title" content={title}/>
-        <meta property="og:type" content={type||"article"}/>
+        <meta property="og:type" content={type || "article"}/>
         <meta property="og:url" content={url}/>
 
         <meta property="og:image" content={image}/>
