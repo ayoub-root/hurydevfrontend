@@ -5,7 +5,7 @@ import * as React from "react";
 import {useEffect, useState} from "react";
 import {AppRouterCacheProvider} from "@mui/material-nextjs/v14-appRouter";
 import CssBaseline from "@mui/material/CssBaseline";
-
+import ReactGA from "react-ga4";
 import {store} from "../lib/store";
 import {Provider} from "react-redux";
 import MyTheme from "components/MyTheme";
@@ -28,11 +28,13 @@ const Action = (snackbarId: any) => (
     </>
 );
 
-
+ReactGA.initialize("G-6SZ0TL4X04");
 export default function RootLayout(props: { children: React.ReactNode }) {
     const myRef = React.useRef(null);
     const [showHeader, setShowHeader] = useState(true);
-
+    React.useEffect(() => {
+        ReactGA.send({hitType: "pageview", page: window.location.pathname});
+    }, []);
     useEffect(() => {
         // Check pathname when component mounts and on route changes
         const currentPathname = window.location.pathname;
@@ -51,6 +53,7 @@ export default function RootLayout(props: { children: React.ReactNode }) {
     return (
         <html lang="en">
         {showHeader && <CustomHeader/>}
+
 
 
         <body style={{fontFamily: "verdana !important"}}>
