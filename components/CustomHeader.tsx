@@ -1,6 +1,8 @@
 // components/Layout.js
 
 import React from "react";
+import {useSelector} from "react-redux";
+import {RootState} from "../lib/store";
 
 const CustomHeader = (props: any): any => {
 

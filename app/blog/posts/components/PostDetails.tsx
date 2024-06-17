@@ -120,6 +120,7 @@ const PostDetails = ({params: {slug}, isDialog}: { params: { slug: string }, isD
             // alert(error);
         }
     };
+    const filtersList:any[] = useSelector((state: RootState) => state.filtersList)?.filtersList?.filter((r: any) => r.type == "tags" && post?.tags?.includes(r.id)) || [];
 
     return <Grid sx={{}}>
         <LoadingPage open={loading} onClose={() => setLoading(false)}/>
@@ -130,8 +131,8 @@ const PostDetails = ({params: {slug}, isDialog}: { params: { slug: string }, isD
                     title: post?.title,
                     description: post?.description,
                     image:process.env.NEXT_PUBLIC_ONLINE_WS_URI + "/myfiles/posts/" +  post?.image,
-                    tags: post?.tags,
-                    url: process.env.NEXT_PUBLIC_ONLINE_SRV_URI + "/posts/" + post?.slug,
+                    tags: filtersList?.map(e=>e?.label).join(", ") ,
+                    url: process.env.NEXT_PUBLIC_URL + "/blog/posts/" + post?.slug,
                     updatedAt: post?.updatedAt
 
                 }}
